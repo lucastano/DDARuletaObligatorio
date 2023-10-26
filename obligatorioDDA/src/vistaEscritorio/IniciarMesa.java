@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package iuGrafica;
+package vistaEscritorio;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import obligatoriodda.Logica.Croupier;
-import obligatoriodda.Logica.Fachada;
-import obligatoriodda.Logica.TipoApuesta;
+import modelo.Croupier;
+import modelo.Fachada;
+import modelo.TipoApuesta;
 
 /**
  *

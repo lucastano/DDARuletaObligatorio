@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package obligatoriodda.Logica;
+package modelo;
 
 /**
  *
  * @author Lucas
  */
-public class ApuestaDocena extends TipoApuesta {
+public class ApuestaDirecta extends TipoApuesta
+{
     
-    public ApuestaDocena(int factorPago, String nombre,boolean obligatorio) {
+    public ApuestaDirecta(int factorPago, String nombre,boolean obligatorio) {
         super(factorPago, nombre,obligatorio);
     }
 
@@ -28,5 +29,6 @@ public class ApuestaDocena extends TipoApuesta {
     public String toString() {
         return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+    
     
 }

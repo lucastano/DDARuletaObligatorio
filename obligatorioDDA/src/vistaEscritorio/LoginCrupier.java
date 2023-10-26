@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package iuGrafica;
+package vistaEscritorio;
 
 import javax.swing.JOptionPane;
-import obligatoriodda.Logica.Croupier;
-import obligatoriodda.Logica.Fachada;
+import modelo.Croupier;
+import modelo.Fachada;
 
 public class LoginCrupier extends javax.swing.JDialog {
 

@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package obligatoriodda.Logica;
+package modelo;
 
 /**
  *
  * @author Lucas
  */
-public class AleatorioParcial extends Efecto{
+public class Simulador extends Efecto {
     
-    public AleatorioParcial(String nombre) {
+    public Simulador(String nombre) {
         super(nombre);
     }
     
