@@ -8,16 +8,12 @@ import javax.swing.JOptionPane;
 import obligatoriodda.Logica.Croupier;
 import obligatoriodda.Logica.Fachada;
 
-/**
- *
- * @author Lucas
- */
-public class loginCrupier extends javax.swing.JDialog {
+public class LoginCrupier extends javax.swing.JDialog {
 
     /**
      * Creates new form loginCrupier
      */
-    public loginCrupier(java.awt.Frame parent, boolean modal) {
+    public LoginCrupier(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -41,6 +37,12 @@ public class loginCrupier extends javax.swing.JDialog {
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Cedula");
 
@@ -105,13 +107,16 @@ public class loginCrupier extends javax.swing.JDialog {
         }else{
             dispose();
             new IniciarMesa(c).setVisible(true);
-            //101 aaa
-            
+            //101 aaa 
         }
         
                 
                 
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,20 +135,21 @@ public class loginCrupier extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginCrupier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                loginCrupier dialog = new loginCrupier(new javax.swing.JFrame(), true);
+                LoginCrupier dialog = new LoginCrupier(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

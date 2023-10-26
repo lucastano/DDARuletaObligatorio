@@ -3,13 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package iuGrafica;
+import iuGrafica.LoginCrupier;
 
-/**
- *
- * @author Lucas
- */
 public class Inicio extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Inicio
      */
@@ -27,18 +24,39 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         loginCrupier = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Login");
+        jButton1.setText("Soy Cruppier!");
+        jButton1.setActionCommand("irAloginCruppier");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginCruppierActionPerformed(evt);
+            }
+        });
 
-        loginCrupier.setText("Login Crupier");
+        jButton2.setText("Soy jugador!");
+        jButton2.setActionCommand("irAloginJugador");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jugadorActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Seleccione una opcion para continuar:");
+
+        jMenu1.setText("Inicio");
+
+        loginCrupier.setText("Login");
         loginCrupier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginCrupierActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
         jMenu1.add(loginCrupier);
@@ -51,20 +69,49 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(90, 90, 90))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginCrupierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCrupierActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        new loginCrupier(this,false).setVisible(true);
-    }//GEN-LAST:event_loginCrupierActionPerformed
+        
+    }//GEN-LAST:event_loginActionPerformed
+
+    private void loginCruppierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCruppierActionPerformed
+        // Crear una instancia de la vista de Crupier y mostrarla
+        LoginCrupier loginCrupierInstance = new LoginCrupier(this, true);
+        loginCrupierInstance.setVisible(true);
+
+        // Si deseas cerrar la ventana actual después de abrir la nueva vista:
+        this.dispose();
+    }//GEN-LAST:event_loginCruppierActionPerformed
+
+    private void jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jugadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,6 +149,9 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem loginCrupier;
