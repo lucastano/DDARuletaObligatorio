@@ -11,8 +11,8 @@ package obligatoriodda.Logica;
 public class ApuestaDirecta extends TipoApuesta
 {
     
-    public ApuestaDirecta(int factorPago, String nombre) {
-        super(factorPago, nombre);
+    public ApuestaDirecta(int factorPago, String nombre,boolean obligatorio) {
+        super(factorPago, nombre,obligatorio);
     }
 
     @Override

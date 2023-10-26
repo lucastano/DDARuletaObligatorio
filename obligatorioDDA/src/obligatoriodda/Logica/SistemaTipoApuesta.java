@@ -18,16 +18,16 @@ public class SistemaTipoApuesta {
         return tiposApuesta;
     }
     
-    public void agregarTipoApuesta(int factorPago,String nombre){
+    public void agregarTipoApuesta(int factorPago,String nombre,boolean obligatorio){
         //capas que podemos sacar el nombre al tipoApuesta
         if(nombre.equals("ApuestaDocena")){
-             tiposApuesta.add(new ApuestaDocena(factorPago,nombre));
+             tiposApuesta.add(new ApuestaDocena(factorPago,nombre,obligatorio));
         }
         if(nombre.equals("ApuestaColor")){
-            tiposApuesta.add(new ApuestaColor(factorPago,nombre));
+            tiposApuesta.add(new ApuestaColor(factorPago,nombre,obligatorio));
         }
         if(nombre.equals("ApuestaDirecta")){
-            tiposApuesta.add(new ApuestaDirecta(factorPago,nombre));
+            tiposApuesta.add(new ApuestaDirecta(factorPago,nombre,obligatorio));
         }
     }
     

@@ -10,8 +10,8 @@ package obligatoriodda.Logica;
  */
 public class ApuestaColor extends TipoApuesta {
     
-    public ApuestaColor(int factorPago, String nombre) {
-        super(factorPago, nombre);
+    public ApuestaColor(int factorPago, String nombre,boolean obligatorio) {
+        super(factorPago, nombre,obligatorio);
     }
 
     @Override

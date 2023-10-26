@@ -41,8 +41,8 @@ public class Fachada {
         sAcceso.agregarJugador(cedula, password, nombre,monto);
     }
 
-    public void agregarTipoApuesta(int factorPago, String nombre) {
-        sTipoApuesta.agregarTipoApuesta(factorPago, nombre);
+    public void agregarTipoApuesta(int factorPago, String nombre,boolean obligatorio) {
+        sTipoApuesta.agregarTipoApuesta(factorPago, nombre,obligatorio);
     }
 
     public List<TipoApuesta> getTiposApuesta() {
