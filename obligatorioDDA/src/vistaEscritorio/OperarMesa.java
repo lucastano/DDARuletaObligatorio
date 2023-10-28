@@ -4,6 +4,7 @@
  */
 package vistaEscritorio;
 
+import controladores.OperarMesaController;
 import controladores.VistaOperarMesa;
 import java.awt.Image;
 import java.util.List;
@@ -25,18 +26,13 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
     /**
      * Creates new form OperarMesa
      */
-    private Mesa mesa;
-    private Croupier croupier;
-    private List<TipoApuesta>tiposApuestaSeleccionados;
+ 
+    private OperarMesaController controller;
     
     public OperarMesa( Croupier croupier, List<TipoApuesta>tiposApuestaSeleccionados ) {
         initComponents();
         setLocationRelativeTo(null);  
-        this.croupier=croupier;
-        this.tiposApuestaSeleccionados=tiposApuestaSeleccionados;
-        this.mesa=Fachada.getInstancia().crearMesa(tiposApuestaSeleccionados, croupier);
-        mesa.avisar(Mesa.eventos.cambioBalance);
-        mesa.avisar(Mesa.eventos.cambioRonda);
+        controller= new OperarMesaController(this,tiposApuestaSeleccionados,croupier);
         escalarImagenes();
         
         

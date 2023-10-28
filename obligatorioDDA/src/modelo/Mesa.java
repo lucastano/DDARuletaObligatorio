@@ -20,6 +20,7 @@ public class Mesa extends Observable {
     private int numeroRuleta;
     private static int ultimoNumeroRuleta=1;
     private List<TipoApuesta>tiposApuestaHabilitados;
+    
     public enum eventos{cambioBalance,cambioRonda};
 
     public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier) {
@@ -28,6 +29,7 @@ public class Mesa extends Observable {
         this.numeroRuleta=this.ultimoNumeroRuleta;
         this.ultimoNumeroRuleta++;
         this.tiposApuestaHabilitados=tiposApuesta;
+        
  
     }
 

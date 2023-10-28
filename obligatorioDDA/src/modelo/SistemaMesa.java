@@ -21,6 +21,8 @@ public class SistemaMesa {
     
     public Mesa crearMesa(List<TipoApuesta>tiposApuestasSeleccionadas,Croupier crupier){
         Mesa mesa = new Mesa(tiposApuestasSeleccionadas,crupier);
+        mesa.avisar(Mesa.eventos.cambioBalance);
+        mesa.avisar(Mesa.eventos.cambioRonda);
         mesas.add(mesa);
         
         return mesa;
