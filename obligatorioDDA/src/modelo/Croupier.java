@@ -8,34 +8,38 @@ package modelo;
  *
  * @author Lucas
  */
-public class Croupier {
+public class Croupier extends Usuario {
     private String nombre;
     private String cedula;
     private String password;
     private Mesa mesa;
 
     public Croupier(String nombre, String cedula, String password) {
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.password = password;
-        this.mesa=null;
+        super(nombre,cedula,password);
+        
     }
 
-    public String getNombre() {
-        return nombre;
+    @Override
+    public String toString() {
+        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-
+    @Override
     public String getPassword() {
-        return password;
+        return super.getPassword(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+
+    @Override
+    public String getCedula() {
+        return super.getCedula(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    @Override
+    public String getNombre() {
+        return super.getNombre(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
     
-    public void agregarMesa(Mesa mesa){
-        this.mesa=mesa;
-    }
     
     
     

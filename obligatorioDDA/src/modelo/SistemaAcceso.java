@@ -32,7 +32,7 @@ public class SistemaAcceso {
         
     }
     public void agregarJugador(String cedula,String password,String nombre,int montoInicial){
-        Jugador j = new Jugador(nombre,cedula,password,montoInicial);
+        Jugador j = new Jugador(nombre,cedula,montoInicial,password);
         if(!jugadores.contains(j)){
             jugadores.add(j);
         }

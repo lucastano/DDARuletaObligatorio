@@ -56,6 +56,10 @@ public class Fachada {
     public void agregarEfecto(String nombre) {
         sEfectos.agregarEfecto(nombre);
     }
+
+    public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier) {
+        return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier);
+    }
     
     
     

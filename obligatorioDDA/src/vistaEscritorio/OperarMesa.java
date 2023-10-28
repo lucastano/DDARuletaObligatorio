@@ -10,6 +10,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Croupier;
+import modelo.Fachada;
 import modelo.Mesa;
 import modelo.TipoApuesta;
 
@@ -31,8 +32,9 @@ public class OperarMesa extends javax.swing.JFrame {
         setLocationRelativeTo(null);  
         this.croupier=croupier;
         this.tiposApuestaSeleccionados=tiposApuestaSeleccionados;
-        crearMesa();
+        this.mesa=Fachada.getInstancia().crearMesa(tiposApuestaSeleccionados, croupier);
         escalarImagenes();
+        mostrarDetalles();
         
     }
 
@@ -48,9 +50,10 @@ public class OperarMesa extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lblBalance = new javax.swing.JLabel();
         lblNroRuleta = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        btnCerrarMesa = new javax.swing.JButton();
+        lblRonda = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        lblValorBalance = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -61,9 +64,14 @@ public class OperarMesa extends javax.swing.JFrame {
         lblNroRuleta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         lblNroRuleta.setText("Ruleta #");
 
-        jButton2.setText("Cerrar mesa");
+        btnCerrarMesa.setText("Cerrar mesa");
+        btnCerrarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarMesaActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Ronda #");
+        lblRonda.setText("Ronda #");
 
         jMenu1.setText("Aplicacion Crupier - Operar ruleta");
         jMenuBar1.add(jMenu1);
@@ -83,12 +91,14 @@ public class OperarMesa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblValorBalance)
+                        .addGap(89, 89, 89)
+                        .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                         .addComponent(lblNroRuleta)
                         .addGap(88, 88, 88)))
-                .addComponent(jButton2)
+                .addComponent(btnCerrarMesa)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -101,9 +111,10 @@ public class OperarMesa extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNroRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
+                    .addComponent(btnCerrarMesa)
                     .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblRonda)
+                    .addComponent(lblValorBalance))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -114,26 +125,30 @@ public class OperarMesa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarMesaActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        //aca deberiamos cerrar la mesa , quitar observadores, sesiones etc
+    }//GEN-LAST:event_btnCerrarMesaActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnCerrarMesa;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblBalance;
     private javax.swing.JLabel lblNroRuleta;
+    private javax.swing.JLabel lblRonda;
+    private javax.swing.JLabel lblValorBalance;
     // End of variables declaration//GEN-END:variables
 
-    private void crearMesa() {
-        Mesa mesa = new Mesa(this.tiposApuestaSeleccionados,this.croupier);
-        JOptionPane.showMessageDialog(this, "se creo mesa numero :"+mesa.getNumeroRuleta()+ " balance de la mesa: "+mesa.getBalanceMesa());
-    }
+    
 
     private void escalarImagenes() {
         ImageIcon img= new ImageIcon(getClass().getResource("iconobillete.png"));
@@ -145,5 +160,11 @@ public class OperarMesa extends javax.swing.JFrame {
         Image imgEscaladaRuleta= imgruleta.getImage().getScaledInstance(lblNroRuleta.getWidth(), lblNroRuleta.getHeight(), Image.SCALE_SMOOTH);
         Icon iconoEscaladoRuleta=new ImageIcon(imgEscaladaRuleta);
         lblNroRuleta.setIcon(iconoEscaladoRuleta);
+    }
+
+    private void mostrarDetalles() {
+        lblValorBalance.setText("$ "+mesa.getBalanceMesa());
+        lblRonda.setText("Ronda # "+mesa.getRondas().size());
+        lblNroRuleta.setText(lblNroRuleta.getText()+" "+mesa.getNumeroRuleta());
     }
 }

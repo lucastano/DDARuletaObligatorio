@@ -8,30 +8,53 @@ package modelo;
  *
  * @author Lucas
  */
-public class Jugador {
+public class Jugador extends Usuario {
     private String nombre;
     private String cedula;
     private String password;
-    private int saldoInicial;
+    private int saldo;
 
-    public String getNombre() {
-        return nombre;
+    public Jugador(String nombre, String cedula, int saldoInicial, String password) {
+        super(nombre, cedula, password);
+        this.saldo = saldoInicial;
     }
 
-    public String getCedula() {
-        return cedula;
+    @Override
+    public String toString() {
+        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
+    @Override
     public String getPassword() {
-        return password;
+        return super.getPassword(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    public Jugador(String nombre, String cedula, String password,int saldo) {
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.password = password;
-        this.saldoInicial=saldo;
+    @Override
+    public String getCedula() {
+        return super.getCedula(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+
+    @Override
+    public String getNombre() {
+        return super.getNombre(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    public int getSaldoInicial() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+    
+    
+    
+    
+    
+
+   
+
+    
     
     
     
