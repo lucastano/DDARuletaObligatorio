@@ -96,24 +96,30 @@ public class LoginCrupier extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
         String cedula = txtCedula.getText();
-        String password=new String(psw.getPassword());
-        
-        Croupier c= Fachada.getInstancia().loginCroupiers(cedula, password);
-        if(c==null){
-            JOptionPane.showMessageDialog(this,"Login incorrecto");
-            
-        }else{
-            dispose();
-            new IniciarMesa(c).setVisible(true);
-            //101 aaa 
+        String password = new String(psw.getPassword());
+
+        Croupier c = Fachada.getInstancia().loginCroupier(cedula, password);
+        if (c == null) {
+            mostrarError("Login incorrecto");
+        } else {
+            mostrarVentanaIniciarMesa(c);
         }
         
                 
                 
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void mostrarVentanaIniciarMesa(Croupier croupier) {
+        this.dispose();  // Cierra la ventana de login
+        IniciarMesa ventanaMesa = new IniciarMesa(croupier);
+        ventanaMesa.setVisible(true);
+    }
+
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
     private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaActionPerformed

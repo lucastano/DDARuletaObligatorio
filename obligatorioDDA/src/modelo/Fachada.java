@@ -25,8 +25,8 @@ public class Fachada {
     }
 
     //hay una mejor forma de hacerlo , unificando los login , ver como se hace 
-    public Croupier loginCroupiers(String cedula, String password) {
-        return sAcceso.loginCroupiers(cedula, password);
+    public Croupier loginCroupier(String cedula, String password) {
+        return sAcceso.loginCroupier(cedula, password);
     }
 
     public Jugador loginJugador(String cedula, String password) {

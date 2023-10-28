@@ -15,7 +15,7 @@ public class SistemaAcceso {
     private List<Croupier> croupiers= new ArrayList<>();
     private List<Jugador>jugadores=new ArrayList<>();
 
-    public List<Croupier> getCroupiers() {
+    public List<Croupier> getCroupier() {
         return croupiers;
     }
 
@@ -39,7 +39,7 @@ public class SistemaAcceso {
         
     }
     
-    public Croupier loginCroupiers(String cedula,String password){
+    public Croupier loginCroupier(String cedula,String password){
         
         for(Croupier c:croupiers){
             if(c.getCedula().equals(cedula) && c.getPassword().equals(password)){
