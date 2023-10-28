@@ -22,6 +22,7 @@ public class SistemaMesa {
     public Mesa crearMesa(List<TipoApuesta>tiposApuestasSeleccionadas,Croupier crupier){
         Mesa mesa = new Mesa(tiposApuestasSeleccionadas,crupier);
         mesas.add(mesa);
+        
         return mesa;
     }
     

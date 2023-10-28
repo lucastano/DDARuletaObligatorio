@@ -6,12 +6,13 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import observador.Observable;
 
 /**
  *
  * @author Lucas
  */
-public class Mesa {
+public class Mesa extends Observable {
     private Croupier operador;
     private List<Efecto>efectosDisponibles;
     private List<Ronda>rondas= new ArrayList<>();
@@ -19,6 +20,7 @@ public class Mesa {
     private int numeroRuleta;
     private static int ultimoNumeroRuleta=1;
     private List<TipoApuesta>tiposApuestaHabilitados;
+    public enum eventos{cambioBalance,cambioRonda};
 
     public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier) {
         this.operador=croupier;

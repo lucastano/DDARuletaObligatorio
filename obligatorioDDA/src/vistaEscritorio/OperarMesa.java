@@ -4,12 +4,14 @@
  */
 package vistaEscritorio;
 
+import controladores.VistaOperarMesa;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Croupier;
+import modelo.Efecto;
 import modelo.Fachada;
 import modelo.Mesa;
 import modelo.TipoApuesta;
@@ -18,7 +20,7 @@ import modelo.TipoApuesta;
  *
  * @author Lucas
  */
-public class OperarMesa extends javax.swing.JFrame {
+public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
 
     /**
      * Creates new form OperarMesa
@@ -33,8 +35,10 @@ public class OperarMesa extends javax.swing.JFrame {
         this.croupier=croupier;
         this.tiposApuestaSeleccionados=tiposApuestaSeleccionados;
         this.mesa=Fachada.getInstancia().crearMesa(tiposApuestaSeleccionados, croupier);
+        mesa.avisar(Mesa.eventos.cambioBalance);
+        mesa.avisar(Mesa.eventos.cambioRonda);
         escalarImagenes();
-        mostrarDetalles();
+        
         
     }
 
@@ -162,9 +166,26 @@ public class OperarMesa extends javax.swing.JFrame {
         lblNroRuleta.setIcon(iconoEscaladoRuleta);
     }
 
-    private void mostrarDetalles() {
-        lblValorBalance.setText("$ "+mesa.getBalanceMesa());
-        lblRonda.setText("Ronda # "+mesa.getRondas().size());
-        lblNroRuleta.setText(lblNroRuleta.getText()+" "+mesa.getNumeroRuleta());
+    
+
+    @Override
+    public void mostrarEfectos(List<Efecto> efectos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public void mostrarBalance(int balance) {
+         lblValorBalance.setText("$ "+balance);
+    }
+
+    @Override
+    public void mostrarNumeroRuleta(int numero) {
+        lblNroRuleta.setText(lblNroRuleta.getText()+" "+numero);
+    }
+    @Override
+    public void mostrarNumeroRonda(int numero) {
+       lblRonda.setText("Ronda # "+numero);
+    }
+
+    
 }
