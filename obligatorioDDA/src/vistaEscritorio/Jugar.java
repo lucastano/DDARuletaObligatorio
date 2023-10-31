@@ -14,8 +14,7 @@ import modelo.Mesa;
  * @author Lucas
  */
 public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
-    private Jugador jugador;
-    private Mesa mesa;
+    
     private MesaJugadorController controller;
 
     /**
@@ -24,8 +23,8 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     public Jugar(java.awt.Frame parent, boolean modal,Mesa mesa, Jugador jugador) {
         super(parent, modal);
         initComponents();
-        this.jugador=jugador;
-        this.mesa=mesa;
+        controller=new MesaJugadorController(this,mesa,jugador);
+        
     }
 
     /**
@@ -67,8 +66,8 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                 .addComponent(lblNumeroRuleta)
                 .addGap(60, 60, 60)
                 .addComponent(lblNumeroRonda)
-                .addGap(255, 255, 255)
-                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -119,6 +118,9 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
 
     @Override
     public void mostrarDatos(Mesa mesa, Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        lblSaldo.setText("$ "+jugador.getSaldoInicial());
+        lblNumeroRuleta.setText("Ruleta # "+mesa.getNumeroRuleta());
+        lblNumeroRonda.setText("Ronda # "+mesa.getRondas().size());
+        lblUsuario.setText(jugador.getNombre());
     }
 }

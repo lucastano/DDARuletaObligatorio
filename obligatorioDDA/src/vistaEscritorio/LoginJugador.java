@@ -98,7 +98,7 @@ public class LoginJugador extends javax.swing.JDialog {
         }else{
             //aca proximo caso de uso
             dispose();
-            new UnirseAMesa(null,true,jugador).setVisible(true);
+            new UnirseAMesa(null,false,jugador).setVisible(true);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 

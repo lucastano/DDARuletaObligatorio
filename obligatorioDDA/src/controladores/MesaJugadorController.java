@@ -18,9 +18,11 @@ public class MesaJugadorController implements Observador {
     private Mesa mesa;
     private Jugador jugador;
 
-    public MesaJugadorController(VistaMesaJugador vista, Mesa mesa) {
+    public MesaJugadorController(VistaMesaJugador vista, Mesa mesa, Jugador jugador) {
         this.vista = vista;
         this.mesa = mesa;
+        this.jugador=jugador;
+        mostrarDatos();
     }
     
     
@@ -28,6 +30,10 @@ public class MesaJugadorController implements Observador {
     @Override
     public void actualizar(Object evento, Observable origen) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void mostrarDatos() {
+        vista.mostrarDatos(mesa, jugador);
     }
     
 }

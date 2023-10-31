@@ -61,7 +61,7 @@ public class Fachada extends Observable {
     }
 
     public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier) {
-        avisar(cambio);
+//        avisar(cambio);
         return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier);
     }
 
