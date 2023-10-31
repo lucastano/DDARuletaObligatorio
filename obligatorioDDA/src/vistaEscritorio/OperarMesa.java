@@ -81,6 +81,8 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
 
         lblRonda.setText("Ronda #");
 
+        panelRuleta1.setBackground(new java.awt.Color(242, 242, 242));
+
         lblCantidadApuestas.setText("Apuestas :");
 
         jLabel2.setText("|");
