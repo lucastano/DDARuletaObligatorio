@@ -5,18 +5,20 @@
 package modelo;
 
 import java.util.List;
+import static modelo.Fachada.eventos.cambio;
+import observador.Observable;
 
 /**
  *
  * @author Lucas
  */
-public class Fachada {
+public class Fachada extends Observable {
     private static Fachada instancia=new Fachada();
     private SistemaAcceso sAcceso= new SistemaAcceso();
     private SistemaMesa sMesa = new SistemaMesa();
     private SistemaTipoApuesta sTipoApuesta= new SistemaTipoApuesta();
     private SistemaEfecto sEfectos=new SistemaEfecto();
-    
+    public enum eventos{cambio};
 
     public static Fachada getInstancia() {
         return instancia;
@@ -59,6 +61,7 @@ public class Fachada {
     }
 
     public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier) {
+        avisar(cambio);
         return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier);
     }
 

@@ -4,6 +4,8 @@
  */
 package vistaEscritorio;
 
+import controladores.MesaJugadorController;
+import controladores.VistaMesaJugador;
 import modelo.Jugador;
 import modelo.Mesa;
 
@@ -11,9 +13,10 @@ import modelo.Mesa;
  *
  * @author Lucas
  */
-public class Jugar extends javax.swing.JDialog {
+public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     private Jugador jugador;
     private Mesa mesa;
+    private MesaJugadorController controller;
 
     /**
      * Creates new form Jugar
@@ -34,17 +37,66 @@ public class Jugar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSaldo = new javax.swing.JLabel();
+        lblNumeroRuleta = new javax.swing.JLabel();
+        lblNumeroRonda = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblNumeroSorteado = new javax.swing.JLabel();
+        panelRuleta1 = new componente.PanelRuleta();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Aplicacion Jugador");
+
+        lblSaldo.setText("$");
+
+        lblNumeroRuleta.setText("Ruleta #");
+
+        lblNumeroRonda.setText("Ronda #");
+
+        lblNumeroSorteado.setText("numero sort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblNumeroRuleta)
+                .addGap(60, 60, 60)
+                .addComponent(lblNumeroRonda)
+                .addGap(255, 255, 255)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblNumeroSorteado)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSaldo)
+                    .addComponent(lblNumeroRuleta)
+                    .addComponent(lblNumeroRonda)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -56,5 +108,17 @@ public class Jugar extends javax.swing.JDialog {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblNumeroRonda;
+    private javax.swing.JLabel lblNumeroRuleta;
+    private javax.swing.JLabel lblNumeroSorteado;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblUsuario;
+    private componente.PanelRuleta panelRuleta1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarDatos(Mesa mesa, Jugador jugador) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

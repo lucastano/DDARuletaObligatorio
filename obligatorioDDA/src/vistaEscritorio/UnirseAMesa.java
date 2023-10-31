@@ -5,6 +5,8 @@
 package vistaEscritorio;
 
 
+import controladores.MostrarMesasController;
+import controladores.VistaMostrarMesas;
 import java.util.List;
 import modelo.Fachada;
 import modelo.Jugador;
@@ -14,10 +16,11 @@ import modelo.Mesa;
  *
  * @author Lucas
  */
-public class UnirseAMesa extends javax.swing.JDialog {
+public class UnirseAMesa extends javax.swing.JDialog implements VistaMostrarMesas {
     
       private Jugador jugador; 
-      private Mesa mesa;
+      
+      private MostrarMesasController controller;
     
 
     
@@ -29,8 +32,8 @@ public class UnirseAMesa extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         this.jugador=jugador;
-        this.mesa=null;
-        listMesas.setListData(Fachada.getInstancia().getMesas().toArray());
+        this.controller=new MostrarMesasController(this,Fachada.getInstancia());
+        
        
     }
 
@@ -104,15 +107,18 @@ public class UnirseAMesa extends javax.swing.JDialog {
 
     private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked
         // TODO add your handling code here:
-        int pos=listMesas.getSelectedIndex();
-        this.mesa=Fachada.getInstancia().getMesas().get(pos);
+//        int pos=listMesas.getSelectedIndex();
+//        controller.unirseAMesa(pos, jugador);
+        
           
     }//GEN-LAST:event_listMesasMouseClicked
 
     private void btnUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnirseActionPerformed
         // TODO add your handling code here:
+        int pos=listMesas.getSelectedIndex();
+        controller.unirseAMesa(pos, jugador);
         
-        new Jugar(null,true,mesa,jugador).setVisible(true);
+//        new Jugar(null,true,mesa,jugador).setVisible(true);
     }//GEN-LAST:event_btnUnirseActionPerformed
 
     /**
@@ -127,6 +133,18 @@ public class UnirseAMesa extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listMesas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarMesas(List<Mesa> mesas) {
+        listMesas.setListData(mesas.toArray());
+    }
+
+    @Override
+    public void unirseAMesa(Mesa mesa) {
+        dispose();
+      new Jugar(null,true,mesa,jugador).setVisible(true);
+        
+    }
 
     
 }

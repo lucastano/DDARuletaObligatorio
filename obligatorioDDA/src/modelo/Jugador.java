@@ -51,7 +51,9 @@ public class Jugador extends Usuario {
         this.saldo = saldo;
     }
     public void unirseAMesa(Mesa mesa){
-        mesas.add(mesa);
+        if(!mesas.contains(mesa)) {
+            mesas.add(mesa);
+        } 
     }
     
     
