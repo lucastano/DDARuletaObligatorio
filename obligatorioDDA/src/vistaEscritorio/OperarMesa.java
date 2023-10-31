@@ -29,10 +29,10 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
  
     private OperarMesaController controller;
     
-    public OperarMesa( Croupier croupier, List<TipoApuesta>tiposApuestaSeleccionados ) {
+    public OperarMesa( Croupier croupier, List<TipoApuesta>tiposApuestaSeleccionados, List<Efecto> efectosDisponibles ) {
         initComponents();
         setLocationRelativeTo(null);  
-        controller= new OperarMesaController(this,tiposApuestaSeleccionados,croupier);
+        controller= new OperarMesaController(this,tiposApuestaSeleccionados,croupier, efectosDisponibles);
         escalarImagenes();
         
         
@@ -227,8 +227,13 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
 
     @Override
     public void mostrarEfectos(List<Efecto> efectos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        cbEfectos.removeAllItems();
+        for (Efecto efecto : efectos) {
+            cbEfectos.addItem(efecto.toString());
+        }
     }
+
+    
 
     @Override
     public void mostrarBalance(int balance) {

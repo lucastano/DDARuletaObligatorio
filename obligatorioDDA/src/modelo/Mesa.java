@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import observador.Observable;
 
-/**
- *
- * @author Lucas
- */
 public class Mesa extends Observable {
     private Croupier operador;
     private List<Efecto>efectosDisponibles;
@@ -23,14 +19,13 @@ public class Mesa extends Observable {
     
     public enum eventos{cambioBalance,cambioRonda};
 
-    public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier) {
+    public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier, List<Efecto>efectosDisponibles) {
         this.operador=croupier;
         this.balanceMesa=0;
         this.numeroRuleta=this.ultimoNumeroRuleta;
         this.ultimoNumeroRuleta++;
         this.tiposApuestaHabilitados=tiposApuesta;
-        
- 
+        this.efectosDisponibles = Fachada.getInstancia().getEfectos();
     }
 
     public Croupier getOperador() {
@@ -61,13 +56,6 @@ public class Mesa extends Observable {
     public String toString() {
         return "Mesa #"+numeroRuleta+ "Rondas disputadas: "+rondas.size()+" Crupier: "+operador.getNombre();
     }
-    
-    
-
-
-    
-    
-    
     
     
 }

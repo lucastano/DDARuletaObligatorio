@@ -60,9 +60,9 @@ public class Fachada extends Observable {
         sEfectos.agregarEfecto(nombre);
     }
 
-    public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier) {
-//        avisar(cambio);
-        return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier);
+    public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier, List<Efecto>efectosDisponibles) {
+        avisar(cambio);
+        return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier, efectosDisponibles);
     }
 
     public List<Mesa> getMesas() {
