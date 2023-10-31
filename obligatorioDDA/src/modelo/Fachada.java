@@ -16,6 +16,7 @@ public class Fachada {
     private SistemaMesa sMesa = new SistemaMesa();
     private SistemaTipoApuesta sTipoApuesta= new SistemaTipoApuesta();
     private SistemaEfecto sEfectos=new SistemaEfecto();
+    
 
     public static Fachada getInstancia() {
         return instancia;
@@ -60,6 +61,12 @@ public class Fachada {
     public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier) {
         return sMesa.crearMesa(tiposApuestasSeleccionadas, crupier);
     }
+
+    public List<Mesa> getMesas() {
+        return sMesa.getMesas();
+    }
+    
+    
     
     
     

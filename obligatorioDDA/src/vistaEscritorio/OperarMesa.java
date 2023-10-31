@@ -4,12 +4,15 @@
  */
 package vistaEscritorio;
 
+import controladores.OperarMesaController;
+import controladores.VistaOperarMesa;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Croupier;
+import modelo.Efecto;
 import modelo.Fachada;
 import modelo.Mesa;
 import modelo.TipoApuesta;
@@ -18,23 +21,20 @@ import modelo.TipoApuesta;
  *
  * @author Lucas
  */
-public class OperarMesa extends javax.swing.JFrame {
+public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
 
     /**
      * Creates new form OperarMesa
      */
-    private Mesa mesa;
-    private Croupier croupier;
-    private List<TipoApuesta>tiposApuestaSeleccionados;
+ 
+    private OperarMesaController controller;
     
     public OperarMesa( Croupier croupier, List<TipoApuesta>tiposApuestaSeleccionados ) {
         initComponents();
         setLocationRelativeTo(null);  
-        this.croupier=croupier;
-        this.tiposApuestaSeleccionados=tiposApuestaSeleccionados;
-        this.mesa=Fachada.getInstancia().crearMesa(tiposApuestaSeleccionados, croupier);
+        controller= new OperarMesaController(this,tiposApuestaSeleccionados,croupier);
         escalarImagenes();
-        mostrarDetalles();
+        
         
     }
 
@@ -52,8 +52,16 @@ public class OperarMesa extends javax.swing.JFrame {
         lblNroRuleta = new javax.swing.JLabel();
         btnCerrarMesa = new javax.swing.JButton();
         lblRonda = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         lblValorBalance = new javax.swing.JLabel();
+        panelRuleta1 = new componente.PanelRuleta();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblCantidadApuestas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblMonto = new javax.swing.JLabel();
+        cbEfectos = new javax.swing.JComboBox<>();
+        btnLanzarPagar = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -73,6 +81,16 @@ public class OperarMesa extends javax.swing.JFrame {
 
         lblRonda.setText("Ronda #");
 
+        lblCantidadApuestas.setText("Apuestas :");
+
+        jLabel2.setText("|");
+
+        lblMonto.setText("Monto $");
+
+        cbEfectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<<Efecto>>" }));
+
+        btnLanzarPagar.setText("Lanzar / Pagar");
+
         jMenu1.setText("Aplicacion Crupier - Operar ruleta");
         jMenuBar1.add(jMenu1);
 
@@ -83,26 +101,46 @@ public class OperarMesa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1)
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblValorBalance)
                         .addGap(89, 89, 89)
                         .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblNroRuleta)
-                        .addGap(88, 88, 88)))
-                .addComponent(btnCerrarMesa)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnCerrarMesa)
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 953, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblCantidadApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(123, 123, 123)
+                                    .addComponent(btnLanzarPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,9 +155,22 @@ public class OperarMesa extends javax.swing.JFrame {
                     .addComponent(lblValorBalance))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCantidadApuestas)
+                    .addComponent(jLabel2)
+                    .addComponent(lblMonto)
+                    .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLanzarPagar))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,14 +189,22 @@ public class OperarMesa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
+    private javax.swing.JButton btnLanzarPagar;
+    private javax.swing.JComboBox<String> cbEfectos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lblBalance;
+    private javax.swing.JLabel lblCantidadApuestas;
+    private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblNroRuleta;
     private javax.swing.JLabel lblRonda;
     private javax.swing.JLabel lblValorBalance;
+    private componente.PanelRuleta panelRuleta1;
     // End of variables declaration//GEN-END:variables
 
     
@@ -162,9 +221,26 @@ public class OperarMesa extends javax.swing.JFrame {
         lblNroRuleta.setIcon(iconoEscaladoRuleta);
     }
 
-    private void mostrarDetalles() {
-        lblValorBalance.setText("$ "+mesa.getBalanceMesa());
-        lblRonda.setText("Ronda # "+mesa.getRondas().size());
-        lblNroRuleta.setText(lblNroRuleta.getText()+" "+mesa.getNumeroRuleta());
+    
+
+    @Override
+    public void mostrarEfectos(List<Efecto> efectos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public void mostrarBalance(int balance) {
+         lblValorBalance.setText("$ "+balance);
+    }
+
+    @Override
+    public void mostrarNumeroRuleta(int numero) {
+        lblNroRuleta.setText(lblNroRuleta.getText()+" "+numero);
+    }
+    @Override
+    public void mostrarNumeroRonda(int numero) {
+       lblRonda.setText("Ronda # "+numero);
+    }
+
+    
 }
