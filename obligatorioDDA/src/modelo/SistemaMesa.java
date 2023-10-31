@@ -6,28 +6,34 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import static modelo.SistemaMesa.eventos.agrego;
+import observador.Observable;
+import observador.Observador;
 
 /**
  *
  * @author Lucas
  */
-public class SistemaMesa {
+public class SistemaMesa extends Observable {
     
     private List<Mesa> mesas= new ArrayList<>();
+    
+    public enum eventos{agrego};
 
-    public List<Mesa> getMesas() {
-        return mesas;
-    }
+    
     
     public Mesa crearMesa(List<TipoApuesta>tiposApuestasSeleccionadas,Croupier crupier){
         Mesa mesa = new Mesa(tiposApuestasSeleccionadas,crupier);
         mesa.avisar(Mesa.eventos.cambioBalance);
         mesa.avisar(Mesa.eventos.cambioRonda);
         mesas.add(mesa);
+        avisar(agrego);
         
         return mesa;
     }
     
-    
+    public List<Mesa> getMesas() {
+        return mesas;
+    }
     
 }

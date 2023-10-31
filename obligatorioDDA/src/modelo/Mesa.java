@@ -56,6 +56,11 @@ public class Mesa extends Observable {
     public List<TipoApuesta> getTiposApuestaHabilitados() {
         return tiposApuestaHabilitados;
     }
+
+    @Override
+    public String toString() {
+        return "Mesa #"+numeroRuleta+ "Rondas disputadas: "+rondas.size()+" Crupier: "+operador.getNombre();
+    }
     
     
 
