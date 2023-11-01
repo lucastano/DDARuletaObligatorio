@@ -31,8 +31,9 @@ public class MostrarMesasController implements Observador {
     
     
     public void unirseAMesa(int posMesa,Jugador jugador){
-        Mesa mesa= modelo.getMesas().get(posMesa);
-        jugador.unirseAMesa(mesa);
+        Mesa mesa= modelo.getMesas().get(posMesa); 
+        mesa.unirJugador(jugador);
+        
         vista.unirseAMesa(mesa);
         
     }
@@ -44,6 +45,7 @@ public class MostrarMesasController implements Observador {
         if(evento.equals(Fachada.eventos.cambio)){
             vista.mostrarMesas(Fachada.getInstancia().getMesas());
         }
+        
     }
 
     private void mostrarMesas() {

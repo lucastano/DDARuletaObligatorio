@@ -55,7 +55,8 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         jTable1 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAbandonar = new javax.swing.JButton();
+        lblSeleccionada = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +85,11 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         panelRuleta1.setBackground(new java.awt.Color(242, 242, 242));
 
         lblMoneda1.setText("1");
+        lblMoneda1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMoneda1MouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,7 +117,14 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        jButton1.setText("Abandonar");
+        btnAbandonar.setText("Abandonar");
+        btnAbandonar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbandonarActionPerformed(evt);
+            }
+        });
+
+        lblSeleccionada.setText("ficha seleccionada:  ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,8 +168,13 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAbandonar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(lblSeleccionada)))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -186,12 +204,27 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblSeleccionada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addComponent(btnAbandonar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblMoneda1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMoneda1MouseClicked
+        // TODO add your handling code here:
+        int ficha =1;
+        lblSeleccionada.setText("ficha seleccionada: "+ficha);
+    }//GEN-LAST:event_lblMoneda1MouseClicked
+
+    private void btnAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbandonarActionPerformed
+        // TODO add your handling code here:
+        controller.salir();
+        dispose();
+    }//GEN-LAST:event_btnAbandonarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +232,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAbandonar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -213,6 +246,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     private javax.swing.JLabel lblNumeroRuleta;
     private javax.swing.JLabel lblNumeroSorteado;
     private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblSeleccionada;
     private javax.swing.JLabel lblUsuario;
     private componente.PanelRuleta panelRuleta1;
     // End of variables declaration//GEN-END:variables
@@ -227,7 +261,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
 
     //metodo propio de la vista , escala las imagenes de los label 
     private void escalarImagenes() {
-        ImageIcon img= new ImageIcon(getClass().getResource("ficha1.jpeg"));
+        ImageIcon img= new ImageIcon(getClass().getResource("ficha1.png"));
         Image imgEscalada= img.getImage().getScaledInstance(lblMoneda1.getWidth(), lblMoneda1.getHeight(), Image.SCALE_SMOOTH);
         Icon iconoEscalado=new ImageIcon(imgEscalada);
         lblMoneda1.setIcon(iconoEscalado);

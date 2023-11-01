@@ -20,20 +20,34 @@ public class OperarMesaController implements Observador {
     private Croupier croupier;
     private Mesa mesa;
 
-    public OperarMesaController(VistaOperarMesa vista, List<TipoApuesta> tiposApuesta, Croupier croupier, List<Efecto> efectosDisponibles) {
+    public OperarMesaController(VistaOperarMesa vista, List<TipoApuesta> tiposApuesta, Croupier croupier) {
         this.vista = vista;
         this.tiposApuesta = tiposApuesta;
         this.croupier = croupier;
         this.mesa=Fachada.getInstancia().crearMesa(tiposApuesta, croupier, efectosDisponibles);
+        this.efectosDisponibles=mesa.getEfectosDisponibles();
         vista.mostrarBalance(mesa.getBalanceMesa());
         vista.mostrarNumeroRonda(mesa.getRondas().size());
         vista.mostrarNumeroRuleta(mesa.getNumeroRuleta());
+        vista.mostrarEfectosDisponibles(efectosDisponibles);
+        vista.mostrarDatosJugadores(mesa.getJugadores());
         mesa.agregarObservador(this);
     }
     
     public void cargarEfectos() {
         List<Efecto> efectos = mesa.getEfectosDisponibles(); 
         vista.mostrarEfectos(efectos);
+    }
+    
+    public void lanzar(int efectoRecibido){
+        Efecto efecto=efectosDisponibles.get(efectoRecibido);
+        mesa.nuevaRonda(efecto);
+        mostrarNumeroGanador();
+
+    }
+    public void mostrarNumeroGanador(){
+        vista.mostrarGanador(mesa.getRondaActual().getNumeroGanador());
+        vista.mostrarLanzamientos(mesa.getRondaActual().getNumeroGanador());
     }
 
 
@@ -45,6 +59,10 @@ public class OperarMesaController implements Observador {
         else if(evento.equals(Mesa.eventos.cambioRonda)){
             vista.mostrarNumeroRonda(mesa.getRondas().size());
         }
+        else if(evento.equals(Mesa.eventos.seAgregoJugador) || evento.equals(Mesa.eventos.salioJugador) ){
+            vista.mostrarDatosJugadores(mesa.getJugadores());
+        }
+        
     }
 
 }

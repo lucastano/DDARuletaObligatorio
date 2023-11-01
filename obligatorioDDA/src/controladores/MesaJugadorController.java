@@ -36,4 +36,8 @@ public class MesaJugadorController implements Observador {
         vista.mostrarDatos(mesa, jugador);
     }
     
+    public void salir(){
+        mesa.quitarJugador(jugador);
+    }
+    
 }

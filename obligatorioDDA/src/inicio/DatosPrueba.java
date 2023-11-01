@@ -20,10 +20,10 @@ public class DatosPrueba {
        
        //precarga jugadores
        logica.agregarJugador("201", "aaa","Andres",1000);
-       logica.agregarJugador("202", "bbb","Andres",500);
-       logica.agregarJugador("203", "ccc","Andres",100);
-       logica.agregarJugador("204", "ddd","Andres",50);
-       logica.agregarJugador("205", "eee","Andres",10);
+       logica.agregarJugador("202", "bbb","Nicolas",500);
+       logica.agregarJugador("203", "ccc","Claudia",100);
+       logica.agregarJugador("204", "ddd","Carolina",50);
+       logica.agregarJugador("205", "eee","Simon",10);
        
        //precarga tipos apuesta
        logica.agregarTipoApuesta(10, "ApuestaDocena",false);
@@ -31,9 +31,9 @@ public class DatosPrueba {
        logica.agregarTipoApuesta(10, "ApuestaDirecta",true);
        
        //precarga efectos
-       logica.agregarEfecto("Modo aleatorio completo");
-       logica.agregarEfecto("Modo aleatorio parcial");
-       logica.agregarEfecto("Modo simulador");
+       logica.agregarEfectoAleatorioCompleto("Modo aleatorio completo");
+       logica.agregarEfectoParcial("Modo aleatorio parcial");
+       logica.agregarEfectoSimulador("Modo simulador");
        
        
     }

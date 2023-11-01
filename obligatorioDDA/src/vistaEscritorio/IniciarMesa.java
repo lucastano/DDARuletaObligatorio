@@ -19,7 +19,7 @@ public class IniciarMesa extends javax.swing.JFrame {
      * Creates new form IniciarMesa
      */
     private List<TipoApuesta>tiposApuestaSeleccionados= new ArrayList<>();
-    private List<Efecto>efectosDisponibles= new ArrayList<>();
+    
     private Croupier croupier;
     
     public IniciarMesa( Croupier c) {
@@ -175,7 +175,7 @@ public class IniciarMesa extends javax.swing.JFrame {
     private void btnIniciarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarMesaActionPerformed
         // TODO add your handling code here:
         dispose();
-        new OperarMesa(this.croupier,tiposApuestaSeleccionados, efectosDisponibles).setVisible(true);
+        new OperarMesa(this.croupier,tiposApuestaSeleccionados).setVisible(true);
     }//GEN-LAST:event_btnIniciarMesaActionPerformed
 
     /**

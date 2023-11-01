@@ -19,9 +19,17 @@ public class SistemaEfecto {
         return efectos;
     }
     
-    public void agregarEfecto(String nombre){
+    public void agregarEfectoAleatorio(String nombre){
         //controlar que el efecto no este repetido
-        efectos.add(new Efecto(nombre));
+        efectos.add(new AleatorioCompleto(nombre));
+    }
+    public void agregarEfectoParcial(String nombre){
+        //controlar que el efecto no este repetido
+        efectos.add(new AleatorioParcial(nombre));
+    }
+    public void agregarEfectoSimulador(String nombre){
+        //controlar que el efecto no este repetido
+        efectos.add(new Simulador(nombre));
     }
     
     

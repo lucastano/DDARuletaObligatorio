@@ -795,6 +795,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_par.setText("Pares");
         b_par.setBorder(null);
         b_par.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_par.setEnabled(false);
         b_par.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_par.setPreferredSize(new java.awt.Dimension(47, 30));
         b_par.addActionListener(new java.awt.event.ActionListener() {
@@ -807,6 +808,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_impar.setText("Impares");
         b_impar.setBorder(null);
         b_impar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_impar.setEnabled(false);
         b_impar.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_impar.setPreferredSize(new java.awt.Dimension(47, 30));
         b_impar.addActionListener(new java.awt.event.ActionListener() {
@@ -843,6 +845,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_mayor.setText("Mayores");
         b_mayor.setBorder(null);
         b_mayor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_mayor.setEnabled(false);
         b_mayor.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_mayor.setPreferredSize(new java.awt.Dimension(35, 30));
         b_mayor.addActionListener(new java.awt.event.ActionListener() {
@@ -855,8 +858,11 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_menor.setText("Menores");
         b_menor.setBorder(null);
         b_menor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_menor.setEnabled(false);
         b_menor.setMargin(new java.awt.Insets(2, 0, 3, 0));
+        b_menor.setOpaque(true);
         b_menor.setPreferredSize(new java.awt.Dimension(35, 30));
+        b_menor.setRequestFocusEnabled(false);
         b_menor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_menorActionPerformed(evt);
@@ -867,6 +873,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_primo.setText("Primos");
         b_primo.setBorder(null);
         b_primo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_primo.setEnabled(false);
         b_primo.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_primo.setPreferredSize(new java.awt.Dimension(35, 30));
         b_primo.addActionListener(new java.awt.event.ActionListener() {
@@ -879,6 +886,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_compuesto.setText("Compuestos");
         b_compuesto.setBorder(null);
         b_compuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_compuesto.setEnabled(false);
         b_compuesto.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_compuesto.setPreferredSize(new java.awt.Dimension(35, 30));
         b_compuesto.addActionListener(new java.awt.event.ActionListener() {

@@ -16,7 +16,7 @@ public class Jugador extends Usuario {
     private String cedula;
     private String password;
     private int saldo;
-    private List<Mesa>mesas = new ArrayList<>();
+    
 
     public Jugador(String nombre, String cedula, int saldoInicial, String password) {
         super(nombre, cedula, password);
@@ -50,11 +50,7 @@ public class Jugador extends Usuario {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    public void unirseAMesa(Mesa mesa){
-        if(!mesas.contains(mesa)) {
-            mesas.add(mesa);
-        } 
-    }
+    
     
     
     

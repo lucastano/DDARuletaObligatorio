@@ -6,18 +6,23 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import static modelo.Mesa.eventos.cambioRonda;
+import static modelo.Mesa.eventos.salioJugador;
+import static modelo.Mesa.eventos.seAgregoJugador;
 import observador.Observable;
 
 public class Mesa extends Observable {
     private Croupier operador;
     private List<Efecto>efectosDisponibles;
+    private Ronda rondaActual;
     private List<Ronda>rondas= new ArrayList<>();
     private int balanceMesa;
     private int numeroRuleta;
     private static int ultimoNumeroRuleta=1;
     private List<TipoApuesta>tiposApuestaHabilitados;
+    private List<Jugador>jugadores=new ArrayList<>();
     
-    public enum eventos{cambioBalance,cambioRonda};
+    public enum eventos{cambioBalance,cambioRonda,seAgregoJugador,salioJugador};
 
     public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier, List<Efecto>efectosDisponibles) {
         this.operador=croupier;
@@ -27,6 +32,12 @@ public class Mesa extends Observable {
         this.tiposApuestaHabilitados=tiposApuesta;
         this.efectosDisponibles = Fachada.getInstancia().getEfectos();
     }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+    
+    
 
     public Croupier getOperador() {
         return operador;
@@ -50,6 +61,36 @@ public class Mesa extends Observable {
 
     public List<TipoApuesta> getTiposApuestaHabilitados() {
         return tiposApuestaHabilitados;
+    }
+
+    public Ronda getRondaActual() {
+        return rondaActual;
+    }
+    
+    public void unirJugador(Jugador jugador){
+        if(!jugadores.contains(jugador)){
+            jugadores.add(jugador);
+            avisar(seAgregoJugador);
+        }
+        
+    }
+    public void quitarJugador(Jugador jugador){
+        if(jugadores.contains(jugador)){
+            jugadores.remove(jugador);
+            avisar(salioJugador);
+        }
+        
+    }
+    
+    
+    
+    public void nuevaRonda(Efecto efectoSeleccionado){
+        Ronda ronda = new Ronda(efectoSeleccionado);
+        ronda.sortear(rondas);
+        this.rondaActual=ronda;
+        rondas.add(ronda);
+        avisar(cambioRonda);
+        
     }
 
     @Override

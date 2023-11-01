@@ -56,9 +56,19 @@ public class Fachada extends Observable {
         return sEfectos.getEfectos();
     }
 
-    public void agregarEfecto(String nombre) {
-        sEfectos.agregarEfecto(nombre);
+    public void agregarEfectoAleatorioCompleto(String nombre) {
+        sEfectos.agregarEfectoAleatorio(nombre);
     }
+
+    public void agregarEfectoParcial(String nombre) {
+        sEfectos.agregarEfectoParcial(nombre);
+    }
+
+    public void agregarEfectoSimulador(String nombre) {
+        sEfectos.agregarEfectoSimulador(nombre);
+    }
+    
+    
 
     public Mesa crearMesa(List<TipoApuesta> tiposApuestasSeleccionadas, Croupier crupier, List<Efecto>efectosDisponibles) {
         avisar(cambio);
