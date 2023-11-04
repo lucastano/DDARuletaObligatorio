@@ -4,14 +4,16 @@
  */
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Lucas
  */
 public class ApuestaColor extends TipoApuesta {
     
-    public ApuestaColor(int factorPago, String nombre,boolean obligatorio) {
-        super(factorPago, nombre,obligatorio);
+    public ApuestaColor(int codigo,int factorPago, String nombre,boolean obligatorio) {
+        super(codigo,factorPago, nombre,obligatorio);
     }
 
     @Override
@@ -27,6 +29,16 @@ public class ApuestaColor extends TipoApuesta {
     @Override
     public String toString() {
         return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    @Override
+    public boolean aplicarRestriccion(Apuesta a, Mesa m) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Casillero> crearCasilleros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

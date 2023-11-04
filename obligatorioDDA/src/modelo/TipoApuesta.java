@@ -4,16 +4,20 @@
  */
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Lucas
  */
-public class TipoApuesta {
+public abstract class TipoApuesta {
+    private int codigo;
     private int factorPago;
     private String nombre;
     private boolean obligatorio;
 
-    public TipoApuesta(int factorPago, String nombre,boolean obligatorio) {
+    public TipoApuesta(int codigo,int factorPago, String nombre,boolean obligatorio) {
+        this.codigo=codigo;
         this.factorPago = factorPago;
         this.nombre = nombre;
         this.obligatorio=obligatorio;
@@ -34,6 +38,15 @@ public class TipoApuesta {
     public void setObligatorio(boolean obligatorio) {
         this.obligatorio = obligatorio;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+    
+    public abstract boolean aplicarRestriccion(Apuesta a, Mesa m);
+    
+    public abstract List<Casillero> crearCasilleros();
+    
     
 
     @Override

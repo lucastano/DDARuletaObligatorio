@@ -723,6 +723,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_3c.setText("3 col.");
         b_3c.setBorder(null);
         b_3c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_3c.setEnabled(false);
         b_3c.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_3c.setPreferredSize(new java.awt.Dimension(47, 25));
         b_3c.addActionListener(new java.awt.event.ActionListener() {
@@ -735,6 +736,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_2c.setText("2 col.");
         b_2c.setBorder(null);
         b_2c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_2c.setEnabled(false);
         b_2c.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_2c.setPreferredSize(new java.awt.Dimension(47, 35));
         b_2c.addActionListener(new java.awt.event.ActionListener() {
@@ -747,6 +749,7 @@ public class PanelRuleta extends javax.swing.JPanel {
         b_1c.setText("1 col.");
         b_1c.setBorder(null);
         b_1c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_1c.setEnabled(false);
         b_1c.setMargin(new java.awt.Insets(2, 0, 3, 0));
         b_1c.setPreferredSize(new java.awt.Dimension(47, 35));
         b_1c.addActionListener(new java.awt.event.ActionListener() {

@@ -4,6 +4,7 @@
  */
 package vistaEscritorio;
 
+import componente.PanelRuleta.Escuchador;
 import controladores.MesaJugadorController;
 import controladores.VistaMesaJugador;
 import java.awt.Image;
@@ -16,7 +17,7 @@ import modelo.Mesa;
  *
  * @author Lucas
  */
-public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
+public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuchador {
     
     private MesaJugadorController controller;
 
@@ -27,6 +28,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         super(parent, modal);
         initComponents();
         controller=new MesaJugadorController(this,mesa,jugador);
+        panelRuleta1.agregar(this);
         escalarImagenes();
         
     }
@@ -73,6 +75,11 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Aplicacion Jugador");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lblSaldo.setText("$");
 
@@ -226,6 +233,12 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         dispose();
     }//GEN-LAST:event_btnAbandonarActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        controller.salir();
+        dispose();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -267,5 +280,11 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         lblMoneda1.setIcon(iconoEscalado);
         
         
+    }
+
+    @Override
+    public void celdaSeleccionada(int universalCellCode) {
+        //
+        int celda= universalCellCode;
     }
 }

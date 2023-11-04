@@ -11,6 +11,21 @@ package modelo;
 public class Numero {
     
     private int numero;
-    private int color;
+    private String color;
+
+    public Numero(int numero, String color) {
+        this.numero = numero;
+        this.color = color;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getColor() {
+        return color;
+    }
+    
+    
     
 }

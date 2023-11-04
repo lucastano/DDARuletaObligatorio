@@ -27,6 +27,14 @@ public class Fachada extends Observable {
     private Fachada() {
     }
 
+    public List<Casillero> getCasilleros() {
+        return sTipoApuesta.getCasilleros();
+    }
+
+    public void agregarCasillero(int ucc, int tipoApuesta) {
+        sTipoApuesta.agregarCasillero(ucc, tipoApuesta);
+    }
+
     //hay una mejor forma de hacerlo , unificando los login , ver como se hace 
     public Croupier loginCroupier(String cedula, String password) {
         return sAcceso.loginCroupier(cedula, password);
@@ -44,8 +52,8 @@ public class Fachada extends Observable {
         sAcceso.agregarJugador(cedula, password, nombre,monto);
     }
 
-    public void agregarTipoApuesta(int factorPago, String nombre,boolean obligatorio) {
-        sTipoApuesta.agregarTipoApuesta(factorPago, nombre,obligatorio);
+    public void agregarTipoApuesta(int codigo,int factorPago, String nombre,boolean obligatorio) {
+        sTipoApuesta.agregarTipoApuesta(codigo,factorPago, nombre,obligatorio);
     }
 
     public List<TipoApuesta> getTiposApuesta() {
@@ -78,6 +86,17 @@ public class Fachada extends Observable {
     public List<Mesa> getMesas() {
         return sMesa.getMesas();
     }
+
+    public List<Numero> getNumeros() {
+        return sTipoApuesta.getNumeros();
+    }
+
+    public void agregarNumero(int numero, String color) {
+        sTipoApuesta.agregarNumero(numero, color);
+    }
+    
+    
+    
     
     
     

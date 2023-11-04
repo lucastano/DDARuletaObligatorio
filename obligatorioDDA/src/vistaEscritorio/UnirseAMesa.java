@@ -54,6 +54,11 @@ public class UnirseAMesa extends javax.swing.JDialog implements VistaMostrarMesa
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Aplicacion Jugador - Unirse a mesa");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,6 +126,10 @@ public class UnirseAMesa extends javax.swing.JDialog implements VistaMostrarMesa
 //        new Jugar(null,true,mesa,jugador).setVisible(true);
     }//GEN-LAST:event_btnUnirseActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -142,7 +151,7 @@ public class UnirseAMesa extends javax.swing.JDialog implements VistaMostrarMesa
     @Override
     public void unirseAMesa(Mesa mesa) {
         dispose();
-      new Jugar(null,true,mesa,jugador).setVisible(true);
+      new Jugar(null,false,mesa,jugador).setVisible(true);
         
     }
 

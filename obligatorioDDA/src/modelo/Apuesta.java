@@ -9,5 +9,13 @@ package modelo;
  * @author Lucas
  */
 public class Apuesta {
+    private int monto ;
+    private Casillero casillero;
+
+    public Apuesta(int monto, Casillero casillero) {
+        this.monto = monto;
+        this.casillero = casillero;
+    }
+    
     
 }
