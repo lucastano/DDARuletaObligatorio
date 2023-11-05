@@ -27,13 +27,13 @@ public class Fachada extends Observable {
     private Fachada() {
     }
 
-    public List<Casillero> getCasilleros() {
-        return sTipoApuesta.getCasilleros();
-    }
+//    public List<Casillero> getCasilleros() {
+//        return sTipoApuesta.getCasilleros();
+//    }
 
-    public void agregarCasillero(int ucc, int tipoApuesta) {
-        sTipoApuesta.agregarCasillero(ucc, tipoApuesta);
-    }
+//    public void agregarCasillero(int ucc, int tipoApuesta) {
+//        sTipoApuesta.agregarCasillero(ucc, tipoApuesta);
+//    }
 
     //hay una mejor forma de hacerlo , unificando los login , ver como se hace 
     public Croupier loginCroupier(String cedula, String password) {

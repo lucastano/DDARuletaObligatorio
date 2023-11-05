@@ -45,7 +45,7 @@ public abstract class TipoApuesta {
     
     public abstract boolean aplicarRestriccion(Apuesta a, Mesa m);
     
-    public abstract List<Casillero> crearCasilleros();
+    public abstract List<Numero> crearCasilleros(int codigo);
     
     
 

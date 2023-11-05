@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,8 +39,18 @@ public class ApuestaDirecta extends TipoApuesta
     }
 
     @Override
-    public List<Casillero> crearCasilleros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Numero> crearCasilleros( int codigo) {
+        //0 al 36  retorna el numero igual al codigo 
+        List<Numero>retorno= new ArrayList<>();
+        List<Numero>numeros = Fachada.getInstancia().getNumeros();
+        for(Numero n:numeros){
+            if(n.getNumero()==codigo){
+                retorno.add(n);
+                
+            }
+        }
+        
+        return retorno;
     }
     
     

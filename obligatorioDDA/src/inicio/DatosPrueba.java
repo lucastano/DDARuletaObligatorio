@@ -35,20 +35,11 @@ public class DatosPrueba {
        logica.agregarEfectoParcial("Modo aleatorio parcial");
        logica.agregarEfectoSimulador("Modo simulador");
        
-       //agrego casilleros de apuesta directa, su numero corresponde a su codigo
-       // del 0 al 36
-       for(int i =0; i<=36;i++){
-           logica.agregarCasillero(i, 3);
-       }
        
-       //casilleros apuesta color
-       logica.agregarCasillero(43, 2); //rojo 
-       logica.agregarCasillero(44, 2);//negro
        
-       //casilleros apuesta docena 
-       logica.agregarCasillero(40, 1);//primera docena
-       logica.agregarCasillero(41, 1);//segunda docena
-       logica.agregarCasillero(42, 1);//tercera docena
+       
+       
+     
        
        //numeros con sus respectivos colores
        logica.agregarNumero(0, "verde");

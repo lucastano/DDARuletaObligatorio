@@ -13,16 +13,16 @@ import java.util.List;
  */
 public class SistemaTipoApuesta {
     List<TipoApuesta>tiposApuesta= new ArrayList<>();
-    List<Casillero>casilleros=new ArrayList<>();
+    //List<Casillero>casilleros=new ArrayList<>();
     List<Numero>numeros=new ArrayList<>();
 
     public List<TipoApuesta> getTiposApuesta() {
         return tiposApuesta;
     }
 
-    public List<Casillero> getCasilleros() {
-        return casilleros;
-    }
+//    public List<Casillero> getCasilleros() {
+//        return casilleros;
+//    }
 
     public List<Numero> getNumeros() {
         return numeros;
@@ -32,10 +32,10 @@ public class SistemaTipoApuesta {
         numeros.add(new Numero(numero,color));
         
     }
-    
-    public void agregarCasillero(int ucc,int tipoApuesta){
-        casilleros.add(new Casillero(ucc,obtenerTipoApuestaPorCodigo(tipoApuesta)));
-    }
+//    
+//    public void agregarCasillero(int ucc,int tipoApuesta){
+//        casilleros.add(new Casillero(ucc,obtenerTipoApuestaPorCodigo(tipoApuesta)));
+//    }
     
     public void agregarTipoApuesta(int codigo,int factorPago,String nombre,boolean obligatorio){
         //capas que podemos sacar el nombre al tipoApuesta

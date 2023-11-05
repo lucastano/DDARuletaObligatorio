@@ -4,7 +4,6 @@
  */
 package vistaEscritorio;
 
-import componente.PanelRuleta.Escuchador;
 import controladores.MesaJugadorController;
 import controladores.VistaMesaJugador;
 import java.awt.Image;
@@ -17,7 +16,7 @@ import modelo.Mesa;
  *
  * @author Lucas
  */
-public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuchador {
+public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     
     private MesaJugadorController controller;
 
@@ -28,7 +27,6 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
         super(parent, modal);
         initComponents();
         controller=new MesaJugadorController(this,mesa,jugador);
-        panelRuleta1.agregar(this);
         escalarImagenes();
         
     }
@@ -59,6 +57,10 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
         jTable3 = new javax.swing.JTable();
         btnAbandonar = new javax.swing.JButton();
         lblSeleccionada = new javax.swing.JLabel();
+        lblFicha6 = new javax.swing.JLabel();
+        lblFicha10 = new javax.swing.JLabel();
+        lblFicha50 = new javax.swing.JLabel();
+        lblFicha100 = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +80,9 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -133,6 +138,19 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
 
         lblSeleccionada.setText("ficha seleccionada:  ");
 
+        lblFicha6.setText("5");
+
+        lblFicha10.setText("10");
+
+        lblFicha50.setText("50");
+
+        lblFicha100.setText("100");
+        lblFicha100.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFicha100MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,9 +168,17 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
                         .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
+                        .addGap(244, 244, 244)
                         .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(381, 381, 381)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFicha6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFicha10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblFicha50)
+                        .addGap(33, 33, 33)
+                        .addComponent(lblFicha100)
+                        .addGap(129, 129, 129)
                         .addComponent(lblNumeroSorteado)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
@@ -168,7 +194,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 66, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -197,16 +223,19 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(lblNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFicha6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFicha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblFicha50)
+                        .addComponent(lblFicha100)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
@@ -215,7 +244,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
                         .addComponent(lblSeleccionada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addComponent(btnAbandonar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -233,11 +262,11 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
         dispose();
     }//GEN-LAST:event_btnAbandonarActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         controller.salir();
         dispose();
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -254,6 +283,10 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JLabel lblFicha10;
+    private javax.swing.JLabel lblFicha100;
+    private javax.swing.JLabel lblFicha50;
+    private javax.swing.JLabel lblFicha6;
     private javax.swing.JLabel lblMoneda1;
     private javax.swing.JLabel lblNumeroRonda;
     private javax.swing.JLabel lblNumeroRuleta;
@@ -283,8 +316,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador,Escuc
     }
 
     @Override
-    public void celdaSeleccionada(int universalCellCode) {
-        //
-        int celda= universalCellCode;
+    public void mostrarApuestas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

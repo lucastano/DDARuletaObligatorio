@@ -4,18 +4,24 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Lucas
  */
 public class Apuesta {
     private int monto ;
-    private Casillero casillero;
+    private Jugador jugador;
+   
 
-    public Apuesta(int monto, Casillero casillero) {
+    public Apuesta(int monto, Jugador jugador) {
         this.monto = monto;
-        this.casillero = casillero;
+        this.jugador = jugador;
     }
+    
+    
     
     
 }

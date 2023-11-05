@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,8 +38,24 @@ public class ApuestaDocena extends TipoApuesta {
     }
 
     @Override
-    public List<Casillero> crearCasilleros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Numero> crearCasilleros(int codigo) {
+       List<Numero>retorno= new ArrayList<>();
+        List<Numero>numeros = Fachada.getInstancia().getNumeros();
+        //primera docena codigo 40
+        if(codigo==40){
+          retorno = numeros.subList(1, 12);
+        }
+        else if(codigo==41){
+            retorno = numeros.subList(13, 24);
+        }
+        else if(codigo ==42)
+        {
+             retorno = numeros.subList(25, 36);
+            
+        }
+        
+        
+        return retorno;
     }
     
 }

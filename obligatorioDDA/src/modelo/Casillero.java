@@ -15,10 +15,10 @@ public class Casillero {
     private int ucc;
     private TipoApuesta tipoApuesta;
     private List<Numero>numeros= new ArrayList<>();
+    private List<Apuesta>apuestas= new ArrayList<>();
 
-    public Casillero(int ucc,TipoApuesta tipoApuesta) {
+    public Casillero(int ucc) {
         this.ucc = ucc;
-        this.tipoApuesta = tipoApuesta;
         
     }
 
@@ -33,8 +33,19 @@ public class Casillero {
     public List<Numero> getNumeros() {
         return numeros;
     }
+
+    public void setTipoApuesta(TipoApuesta tipoApuesta) {
+        this.tipoApuesta = tipoApuesta;
+    }
+
+    public void setNumeros(List<Numero> numeros) {
+        this.numeros = numeros;
+    }
     
     
+    public void agregarApuesta(Apuesta apuesta){
+        apuestas.add(apuesta);
+    }
     
     
             

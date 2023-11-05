@@ -13,5 +13,6 @@ import modelo.Mesa;
  */
 public interface VistaMesaJugador {
     public void mostrarDatos(Mesa mesa, Jugador jugador);
+    public void mostrarApuestas();
     
 }

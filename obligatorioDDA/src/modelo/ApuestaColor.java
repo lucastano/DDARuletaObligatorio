@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,8 +38,28 @@ public class ApuestaColor extends TipoApuesta {
     }
 
     @Override
-    public List<Casillero> crearCasilleros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Numero> crearCasilleros(int codigo) {
+        List<Numero>numeros = Fachada.getInstancia().getNumeros();
+        List<Numero>rojos = new ArrayList<>();
+        List<Numero>negros = new ArrayList<>();
+        //43 rojo 44 negro
+        
+        for(Numero n:numeros){
+            
+            if(codigo==43){
+                if(n.getColor().equals("Rojo")){
+                    rojos.add(n);
+                }
+                else{
+                    negros.add(n);
+                }
+            }
+            
+        }
+        
+        return codigo==43 ? rojos :negros;
+        
+        
     }
     
 }

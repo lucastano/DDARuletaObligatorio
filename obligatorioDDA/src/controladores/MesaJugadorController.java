@@ -17,12 +17,18 @@ public class MesaJugadorController implements Observador {
     private VistaMesaJugador vista;
     private Mesa mesa;
     private Jugador jugador;
+    private int montoApuesta;
 
     public MesaJugadorController(VistaMesaJugador vista, Mesa mesa, Jugador jugador) {
         this.vista = vista;
         this.mesa = mesa;
         this.jugador=jugador;
+        this.montoApuesta=0;
         mostrarDatos();
+    }
+
+    public void setMontoApuesta(int montoApuesta) {
+        this.montoApuesta = montoApuesta;
     }
     
     
