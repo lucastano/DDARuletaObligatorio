@@ -47,10 +47,38 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     }
 
     private void escalarImagenes() {
+        //lblMoneda1
         ImageIcon img= new ImageIcon(getClass().getResource("ficha1.png"));
         Image imgEscalada= img.getImage().getScaledInstance(lblMoneda1.getWidth(), lblMoneda1.getHeight(), Image.SCALE_SMOOTH);
         Icon iconoEscalado=new ImageIcon(imgEscalada);
         lblMoneda1.setIcon(iconoEscalado);
+        
+        //labelMoneda5
+        ImageIcon img5= new ImageIcon(getClass().getResource("ficha5.png"));
+        Image imgEscalada5= img5.getImage().getScaledInstance(lblMoneda5.getWidth(), lblMoneda5.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado5=new ImageIcon(imgEscalada5);
+        lblMoneda5.setIcon(iconoEscalado5);
+        
+        //lblmoneda10
+        ImageIcon img10= new ImageIcon(getClass().getResource("ficha10.png"));
+        Image imgEscalada10= img10.getImage().getScaledInstance(lblMoneda10.getWidth(), lblMoneda10.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado10=new ImageIcon(imgEscalada10);
+        lblMoneda10.setIcon(iconoEscalado10);
+        
+        //lblMoneda50
+        
+        ImageIcon img50= new ImageIcon(getClass().getResource("ficha50.png"));
+        Image imgEscalada50= img50.getImage().getScaledInstance(lblMoneda50.getWidth(), lblMoneda50.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado50=new ImageIcon(imgEscalada50);
+        lblMoneda50.setIcon(iconoEscalado50);
+        
+        
+        //lblmoneda100
+        
+        ImageIcon img100= new ImageIcon(getClass().getResource("ficha100.png"));
+        Image imgEscalada100= img100.getImage().getScaledInstance(lblMoneda100.getWidth(), lblMoneda100.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado100=new ImageIcon(imgEscalada100);
+        lblMoneda100.setIcon(iconoEscalado100);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -113,7 +141,6 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
             }
         });
 
-        lblMoneda100.setText("Moneda 100");
         lblMoneda100.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMoneda100MouseClicked(evt);
@@ -184,22 +211,22 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                         .addContainerGap()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(lblMoneda1)
-                        .addGap(54, 54, 54)
-                        .addComponent(lblMoneda5)
-                        .addGap(30, 30, 30)
-                        .addComponent(lblMoneda10)
-                        .addGap(36, 36, 36)
-                        .addComponent(lblMoneda50)
-                        .addGap(39, 39, 39)
-                        .addComponent(lblMoneda100)
-                        .addGap(47, 47, 47)
+                        .addGap(152, 152, 152)
+                        .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(lblMoneda5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblMoneda10, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(lblMoneda50, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(lblMoneda100, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22))
+                .addGap(150, 150, 150))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblFichaSeleccionada)
@@ -217,13 +244,13 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMoneda1)
-                    .addComponent(lblMoneda5)
-                    .addComponent(lblMoneda10)
-                    .addComponent(lblMoneda50)
-                    .addComponent(lblMoneda100)
-                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(lblMoneda50, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblMoneda5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMoneda100, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMoneda10, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -234,7 +261,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lblFichaSeleccionada)
-                        .addContainerGap(8, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAbandonar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
