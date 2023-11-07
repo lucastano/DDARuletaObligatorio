@@ -31,6 +31,8 @@ public class Mesa extends Observable {
         this.ultimoNumeroRuleta++;
         this.tiposApuestaHabilitados=tiposApuesta;
         this.efectosDisponibles = Fachada.getInstancia().getEfectos();
+        this.rondaActual=new Ronda();
+        rondas.add(rondaActual);
     }
 
     public List<Jugador> getJugadores() {
@@ -83,10 +85,13 @@ public class Mesa extends Observable {
     }
     
     
+    public void sortearRonda(){
+        this.rondaActual.sortear(rondas);
+        
+    }
     
-    public void nuevaRonda(Efecto efectoSeleccionado){
-        Ronda ronda = new Ronda(efectoSeleccionado);
-        ronda.sortear(rondas);
+    public void nuevaRonda(){
+        Ronda ronda = new Ronda();
         this.rondaActual=ronda;
         rondas.add(ronda);
         avisar(cambioRonda);

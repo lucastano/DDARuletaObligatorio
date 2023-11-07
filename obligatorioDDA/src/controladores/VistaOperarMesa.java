@@ -28,4 +28,6 @@ public interface VistaOperarMesa {
     public void mostrarLanzamientos(int numeroGanador);
 
     public void mostrarDatosJugadores(List<Jugador> jugadores);
+    public void mostrarCantidadApuestasDeRonda(int cantidad);
+    public void mostrarMontoTotalDeRonda(int cantidad);
 }

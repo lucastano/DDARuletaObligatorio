@@ -5,6 +5,7 @@
 package controladores;
 
 import modelo.Jugador;
+import modelo.Ronda;
 import modelo.Mesa;
 import observador.Observable;
 import observador.Observador;
@@ -17,25 +18,28 @@ public class MesaJugadorController implements Observador {
     private VistaMesaJugador vista;
     private Mesa mesa;
     private Jugador jugador;
-    private int montoApuesta;
+    
 
     public MesaJugadorController(VistaMesaJugador vista, Mesa mesa, Jugador jugador) {
         this.vista = vista;
         this.mesa = mesa;
         this.jugador=jugador;
-        this.montoApuesta=0;
+        this.mesa.agregarObservador(this);
         mostrarDatos();
     }
 
-    public void setMontoApuesta(int montoApuesta) {
-        this.montoApuesta = montoApuesta;
-    }
+    
     
     
 
     @Override
     public void actualizar(Object evento, Observable origen) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(evento.equals(Mesa.eventos.cambioRonda)){
+            vista.mostrarDatos(mesa, jugador);
+        }
+//        else if(evento.equals(Ronda.eventos.agregoApuesta)){
+//            
+//        }
     }
 
     private void mostrarDatos() {
@@ -44,6 +48,10 @@ public class MesaJugadorController implements Observador {
     
     public void salir(){
         mesa.quitarJugador(jugador);
+    }
+    public void realizarApuesta(int monto, int codigo){
+        mesa.getRondaActual().nuevaApuesta(monto, jugador, codigo);
+        mesa.getRondaActual().mostrarApuestas();
     }
     
 }

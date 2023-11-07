@@ -67,12 +67,12 @@
                       <Component id="panelRuleta1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lblFichaSeleccionada" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,16 +89,18 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                  <Component id="lblMoneda50" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblMoneda5" alignment="1" min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="lblMoneda100" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="lblMoneda10" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                  <Component id="lblMoneda1" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblMoneda50" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMoneda10" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="lblMoneda1" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="panelRuleta1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -106,16 +108,16 @@
                           <Component id="jScrollPane2" min="-2" pref="172" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblFichaSeleccionada" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnAbandonar" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <Component id="lblFichaSeleccionada" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

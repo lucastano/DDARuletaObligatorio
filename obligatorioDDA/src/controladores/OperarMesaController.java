@@ -9,6 +9,7 @@ import modelo.Croupier;
 import modelo.Efecto;
 import modelo.Fachada;
 import modelo.Mesa;
+import modelo.Ronda;
 import modelo.TipoApuesta;
 import observador.Observable;
 import observador.Observador;
@@ -27,11 +28,12 @@ public class OperarMesaController implements Observador {
         this.mesa=Fachada.getInstancia().crearMesa(tiposApuesta, croupier, efectosDisponibles);
         this.efectosDisponibles=mesa.getEfectosDisponibles();
         vista.mostrarBalance(mesa.getBalanceMesa());
-        vista.mostrarNumeroRonda(mesa.getRondas().size());
+        vista.mostrarNumeroRonda(mesa.getRondaActual().getNumeroRonda());
         vista.mostrarNumeroRuleta(mesa.getNumeroRuleta());
         vista.mostrarEfectosDisponibles(efectosDisponibles);
         vista.mostrarDatosJugadores(mesa.getJugadores());
         mesa.agregarObservador(this);
+        mesa.getRondaActual().agregarObservador(this);
     }
     
     public void cargarEfectos() {
@@ -39,15 +41,26 @@ public class OperarMesaController implements Observador {
         vista.mostrarEfectos(efectos);
     }
     
-    public void lanzar(int efectoRecibido){
-        Efecto efecto=efectosDisponibles.get(efectoRecibido);
-        mesa.nuevaRonda(efecto);
+    public void lanzar(){
+        mesa.getRondaActual().sortear(mesa.getRondas());
         mostrarNumeroGanador();
+        mesa.nuevaRonda();
+        
 
     }
     public void mostrarNumeroGanador(){
         vista.mostrarGanador(mesa.getRondaActual().getNumeroGanador());
         vista.mostrarLanzamientos(mesa.getRondaActual().getNumeroGanador());
+    }
+    
+    public void mostrarCantidadApuestas(){
+        int cantidad=mesa.getRondaActual().cantidadApuestasEnRonda();
+        vista.mostrarCantidadApuestasDeRonda(cantidad);
+    }
+    public void mostrarMontoTotalRonda(){
+        int monto=mesa.getRondaActual().montoTotalApostadoEnRonda();
+        vista.mostrarMontoTotalDeRonda(monto);
+        
     }
 
 
@@ -60,9 +73,18 @@ public class OperarMesaController implements Observador {
             vista.mostrarNumeroRonda(mesa.getRondas().size());
         }
         else if(evento.equals(Mesa.eventos.seAgregoJugador) || evento.equals(Mesa.eventos.salioJugador) ){
-            vista.mostrarDatosJugadores(mesa.getJugadores());
+            vista.mostrarDatosJugadores(mesa.getJugadores()); // pasar propiedades en lugar de el objeto 
+        }
+        else if(evento.equals(Ronda.eventos.agregoApuesta)){
+            mostrarCantidadApuestas();
+            mostrarMontoTotalRonda();
         }
         
+    }
+
+    public void setearEfecto(int pos) {
+         Efecto efecto=efectosDisponibles.get(pos);
+         mesa.getRondaActual().setEfectoSeleccionado(efecto);
     }
 
 }

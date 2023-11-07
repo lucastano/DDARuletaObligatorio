@@ -4,23 +4,33 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
+import static modelo.Ronda.eventos.agregoApuesta;
+
+import observador.Observable;
 
 /**
  *
  * @author Lucas
  */
-public class Ronda {
+public class Ronda extends Observable {
     private int numeroRonda;
     private static int ultimoNumero=1;
     private Efecto efectoSeleccionado;
     private int numeroGanador;
-    private List<Casillero>casillerosApostados;
+    private List<Casillero>casillerosApostados= new ArrayList<>();
+    
+    public enum eventos{agregoApuesta};
 
-    public Ronda(Efecto efectoSeleccionado) {
-        this.efectoSeleccionado = efectoSeleccionado;
+    public Ronda() {
+        
         this.numeroRonda=ultimoNumero;
         this.ultimoNumero++;
+    }
+
+    public void setEfectoSeleccionado(Efecto efectoSeleccionado) {
+        this.efectoSeleccionado = efectoSeleccionado;
     }
     
     
@@ -42,9 +52,11 @@ public class Ronda {
         if(!existe(casillero)){
             casillero.agregarApuesta(apuesta);
             casillerosApostados.add(casillero);
+            avisar(agregoApuesta);
         }else{
             Casillero obtenido=obtenerCasillero(casillero);
             obtenido.agregarApuesta(apuesta);
+            avisar(agregoApuesta);
             
         }
     }
@@ -52,7 +64,12 @@ public class Ronda {
     
     
     public boolean existe (Casillero casillero){
-        return this.casillerosApostados.contains(casillero);
+        if(casillerosApostados.isEmpty()){
+            return false;
+        }else{
+             return this.casillerosApostados.contains(casillero);
+        }
+       
     }
 
     private Casillero obtenerCasillero(Casillero casillero) {
@@ -63,6 +80,28 @@ public class Ronda {
         }
         
         return null;
+    }
+    
+    public void mostrarApuestas(){
+        for(Casillero c:casillerosApostados){
+            c.mostrarApuestas();
+                    
+        }
+    }
+    public int cantidadApuestasEnRonda(){
+        int cantidad =0;
+        for(Casillero c:casillerosApostados){
+            cantidad+=c.cantidadApuestasDelCasillero();
+        }
+        return cantidad;
+    }
+    
+    public int montoTotalApostadoEnRonda(){
+        int cantidad =0;
+        for(Casillero c:casillerosApostados){
+            cantidad+=c.montoTotalApuestas();
+        }
+        return cantidad;
     }
     
     

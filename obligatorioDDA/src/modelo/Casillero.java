@@ -47,7 +47,23 @@ public class Casillero {
         apuestas.add(apuesta);
     }
     
+    public void mostrarApuestas(){
+        for(Apuesta a:apuestas){
+            System.out.println(a.getMonto()+" "+ a.getJugador().getNombre()+" "+this.ucc);
+        }
+    }
     
+    public int cantidadApuestasDelCasillero(){
+        return apuestas.size();
+    }
+    
+    public int montoTotalApuestas(){
+        int cantidad =0;
+        for(Apuesta a:apuestas){
+            cantidad+=a.getMonto();
+        }
+        return cantidad;
+    }
             
     
 }

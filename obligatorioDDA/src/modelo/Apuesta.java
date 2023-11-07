@@ -20,6 +20,16 @@ public class Apuesta {
         this.monto = monto;
         this.jugador = jugador;
     }
+
+    public int getMonto() {
+        return monto;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+    
+    
     
     
     

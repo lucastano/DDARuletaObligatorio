@@ -19,6 +19,8 @@ import modelo.Fachada;
 import modelo.Jugador;
 import modelo.Mesa;
 import modelo.TipoApuesta;
+import observador.Observable;
+import observador.Observador;
 
 /**
  *
@@ -103,6 +105,12 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
         jLabel2.setText("|");
 
         lblMonto.setText("Monto $");
+
+        cbEfectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEfectosActionPerformed(evt);
+            }
+        });
 
         btnLanzarPagar.setText("Lanzar / Pagar");
         btnLanzarPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -264,13 +272,19 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
     private void btnLanzarPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanzarPagarActionPerformed
         // TODO add your handling code here:
         int  pos=cbEfectos.getSelectedIndex();
-        controller.lanzar(pos);
+        controller.setearEfecto(pos);
+        controller.lanzar();
     }//GEN-LAST:event_btnLanzarPagarActionPerformed
 
     private void panelRuleta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuleta1MouseClicked
         // TODO add your handling code here:
         panelRuleta1.getApuesta(HIDE_ON_CLOSE);
     }//GEN-LAST:event_panelRuleta1MouseClicked
+
+    private void cbEfectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEfectosActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_cbEfectosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +387,18 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
             modeloDatos.setValueAt(jugador.getSaldoInicial(),i ,1 );
         }
     }
+
+    @Override
+    public void mostrarCantidadApuestasDeRonda(int cantidad) {
+       lblCantidadApuestas.setText("Apuestas: "+cantidad);
+    }
+
+    @Override
+    public void mostrarMontoTotalDeRonda(int monto) {
+        lblMonto.setText("Monto $: "+monto);
+    }
+
+    
 
     
 }

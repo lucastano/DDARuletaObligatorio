@@ -4,6 +4,7 @@
  */
 package vistaEscritorio;
 
+import componente.PanelRuleta.Escuchador;
 import controladores.MesaJugadorController;
 import controladores.VistaMesaJugador;
 import java.awt.Image;
@@ -16,11 +17,12 @@ import modelo.Mesa;
  *
  * @author Lucas
  */
-public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
+public class Jugar extends javax.swing.JDialog implements VistaMesaJugador, Escuchador {
 
     
     private MesaJugadorController controller;
     private int montoApuesta;
+    
     /**
      * Creates new form Jugar
      */
@@ -28,6 +30,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         super(parent, modal);
         initComponents();
         controller=new MesaJugadorController(this,mesa,jugador);
+        panelRuleta1.agregar(this);
         escalarImagenes();
     }
 
@@ -45,6 +48,7 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
         
         
     }
+    
 
     private void escalarImagenes() {
         //lblMoneda1
@@ -226,11 +230,11 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(150, 150, 150))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblFichaSeleccionada)
-                .addGap(94, 94, 94))
+                .addGap(189, 189, 189))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,13 +248,14 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(lblMoneda50, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(lblMoneda5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblMoneda5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMoneda100, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMoneda10, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblMoneda50, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(lblMoneda10, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -259,13 +264,13 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFichaSeleccionada)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAbandonar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))))
+                        .addGap(23, 23, 23)))
+                .addComponent(lblFichaSeleccionada)
+                .addContainerGap())
         );
 
         pack();
@@ -343,4 +348,12 @@ public class Jugar extends javax.swing.JDialog implements VistaMesaJugador {
     private javax.swing.JLabel lblUsuario;
     private componente.PanelRuleta panelRuleta1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void celdaSeleccionada(int universalCellCode) {
+        //con esto obtengo el casillero seleccionado
+        int celda=universalCellCode;
+        controller.realizarApuesta(this.montoApuesta, celda);
+        
+    }
 }
