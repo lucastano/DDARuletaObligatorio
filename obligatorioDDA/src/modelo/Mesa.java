@@ -97,6 +97,13 @@ public class Mesa extends Observable {
         avisar(cambioRonda);
         
     }
+    
+    public void aumentarBalanceMesa(int monto){
+        this.balanceMesa+=monto;
+    }
+    public void disminuirBalanceMesa(int monto){
+        this.balanceMesa-=monto;
+    }
 
     @Override
     public String toString() {

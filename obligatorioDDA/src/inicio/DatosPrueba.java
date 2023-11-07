@@ -26,9 +26,9 @@ public class DatosPrueba {
        logica.agregarJugador("205", "eee","Simon",10);
        
        //precarga tipos apuesta
-       logica.agregarTipoApuesta(1,10, "ApuestaDocena",false);
-       logica.agregarTipoApuesta(2,10, "ApuestaColor",false);
-       logica.agregarTipoApuesta(3,10, "ApuestaDirecta",true);
+       logica.agregarTipoApuesta(1,3, "ApuestaDocena",false);
+       logica.agregarTipoApuesta(2,2, "ApuestaColor",false);
+       logica.agregarTipoApuesta(3,36, "ApuestaDirecta",true);
        
        //precarga efectos
        logica.agregarEfectoAleatorioCompleto("Modo aleatorio completo");

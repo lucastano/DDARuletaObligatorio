@@ -19,6 +19,7 @@ public class Ronda extends Observable {
     private static int ultimoNumero=1;
     private Efecto efectoSeleccionado;
     private int numeroGanador;
+    private int montoGanado;
     private List<Casillero>casillerosApostados= new ArrayList<>();
     
     public enum eventos{agregoApuesta};
@@ -72,6 +73,12 @@ public class Ronda extends Observable {
        
     }
 
+    public void setMontoGanado(int montoGanado) {
+        this.montoGanado = montoGanado;
+    }
+    
+    
+
     private Casillero obtenerCasillero(Casillero casillero) {
         for(Casillero c:casillerosApostados){
             if(c.equals(casillero)){
@@ -81,10 +88,12 @@ public class Ronda extends Observable {
         
         return null;
     }
-    
+    //esta para pruebas
+    //borrar antes de entregar
     public void mostrarApuestas(){
         for(Casillero c:casillerosApostados){
             c.mostrarApuestas();
+            c.mostrarNumerosDelCasillero();
                     
         }
     }
@@ -102,6 +111,15 @@ public class Ronda extends Observable {
             cantidad+=c.montoTotalApuestas();
         }
         return cantidad;
+    }
+    
+    //metopdo de prueba 
+     //borrar antes de entregar
+    public void mostrarCasillerosApostados(){
+        for(Casillero c:casillerosApostados){
+          System.out.println(c.getUcc());  
+        }
+        
     }
     
     

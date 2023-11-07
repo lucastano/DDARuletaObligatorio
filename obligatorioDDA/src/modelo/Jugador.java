@@ -51,6 +51,14 @@ public class Jugador extends Usuario {
         this.saldo = saldo;
     }
     
+    public void descontarSaldo(int monto){
+        this.saldo=saldo-monto;
+        
+    }
+    public void agregarSaldo(int monto){
+        this.saldo+=monto;
+    }
+    
     
     
     

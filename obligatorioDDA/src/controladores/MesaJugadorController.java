@@ -37,9 +37,7 @@ public class MesaJugadorController implements Observador {
         if(evento.equals(Mesa.eventos.cambioRonda)){
             vista.mostrarDatos(mesa, jugador);
         }
-//        else if(evento.equals(Ronda.eventos.agregoApuesta)){
-//            
-//        }
+
     }
 
     private void mostrarDatos() {
@@ -50,7 +48,11 @@ public class MesaJugadorController implements Observador {
         mesa.quitarJugador(jugador);
     }
     public void realizarApuesta(int monto, int codigo){
+        
         mesa.getRondaActual().nuevaApuesta(monto, jugador, codigo);
+        jugador.descontarSaldo(monto);
+        mostrarDatos();
+        //esto se usa para mostrart por consola, borrar antes de entregar 
         mesa.getRondaActual().mostrarApuestas();
     }
     

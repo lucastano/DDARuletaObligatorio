@@ -71,6 +71,9 @@ public class OperarMesaController implements Observador {
         }
         else if(evento.equals(Mesa.eventos.cambioRonda)){
             vista.mostrarNumeroRonda(mesa.getRondas().size());
+            vista.mostrarMontoTotalDeRonda(0);
+            vista.mostrarCantidadApuestasDeRonda(0);
+            mesa.getRondaActual().agregarObservador(this);
         }
         else if(evento.equals(Mesa.eventos.seAgregoJugador) || evento.equals(Mesa.eventos.salioJugador) ){
             vista.mostrarDatosJugadores(mesa.getJugadores()); // pasar propiedades en lugar de el objeto 

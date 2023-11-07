@@ -19,7 +19,11 @@ public class Casillero {
 
     public Casillero(int ucc) {
         this.ucc = ucc;
-        
+        //0 al 36 directa 
+        //40 primera docena  41 segunda docena y 42 tercera docena // por docena 
+        //43 rojo y 44 negro //color 
+        this.tipoApuesta=insertarTipoApuesta(ucc);
+        agregarNumeros();
     }
 
     public int getUcc() {
@@ -46,7 +50,7 @@ public class Casillero {
     public void agregarApuesta(Apuesta apuesta){
         apuestas.add(apuesta);
     }
-    
+    //esto se usa para mostrar por consola , solo para probar 
     public void mostrarApuestas(){
         for(Apuesta a:apuestas){
             System.out.println(a.getMonto()+" "+ a.getJugador().getNombre()+" "+this.ucc);
@@ -63,6 +67,49 @@ public class Casillero {
             cantidad+=a.getMonto();
         }
         return cantidad;
+    }
+    //segun el tipo de apuesta agrega los numeros correspondientes a la lista de numeros
+    public void agregarNumeros(){
+        this.numeros=tipoApuesta.crearCasilleros(ucc);
+    }
+    
+    //esto se usa solo para mostrar los numeros de cada casillero 
+    //borrar antes de entregar(
+    public void mostrarNumerosDelCasillero(){
+        for(Numero n:numeros){
+            System.out.println(n.getNumero());
+        }
+    }
+
+    private TipoApuesta insertarTipoApuesta(int ucc) {
+        //0 al 36 directa 
+        //40 primera docena  41 segunda docena y 42 tercera docena // por docena 
+        //43 rojo y 44 negro //color 
+        //apuesta directa  codigo 3 , color 2 , docena 1 
+        if(ucc>=0 && ucc<=36){
+            //apuesta directa 
+            for(TipoApuesta tp:Fachada.getInstancia().getTiposApuesta()){
+                if(tp.getCodigo()==3){
+                    return tp;
+                }
+            }
+        }
+        if(ucc >= 40 && ucc <= 42){
+            for(TipoApuesta tp:Fachada.getInstancia().getTiposApuesta()){
+                if(tp.getCodigo()==1){
+                    return tp;
+                }
+            }
+        }
+        if(ucc == 43 || ucc == 44){
+            for(TipoApuesta tp:Fachada.getInstancia().getTiposApuesta()){
+                if(tp.getCodigo()==2){
+                    return tp;
+                }
+            }
+        }
+        
+        return null;
     }
             
     

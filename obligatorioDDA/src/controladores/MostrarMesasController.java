@@ -23,6 +23,7 @@ public class MostrarMesasController implements Observador {
         this.vista = vista;
         this.modelo = modelo;
         modelo.agregarObservador(this);
+        
         mostrarMesas();
     }
     public void salir(){
@@ -45,6 +46,7 @@ public class MostrarMesasController implements Observador {
         if(evento.equals(Fachada.eventos.cambio)){
             vista.mostrarMesas(Fachada.getInstancia().getMesas());
         }
+        
         
     }
 
