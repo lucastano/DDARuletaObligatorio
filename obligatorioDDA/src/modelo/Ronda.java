@@ -47,7 +47,7 @@ public class Ronda extends Observable {
         return numeroGanador;
     }
     
-    public void nuevaApuesta( int monto,Jugador jugador,int codigo){
+    public void nuevaApuesta(int monto,Jugador jugador,int codigo){
         Apuesta apuesta = new Apuesta(monto,jugador); 
         Casillero casillero = new Casillero(codigo);
         if(!existe(casillero)){
@@ -57,12 +57,9 @@ public class Ronda extends Observable {
         }else{
             Casillero obtenido=obtenerCasillero(casillero);
             obtenido.agregarApuesta(apuesta);
-            avisar(agregoApuesta);
-            
+            avisar(agregoApuesta);   
         }
     }
-    
-    
     
     public boolean existe (Casillero casillero){
         if(casillerosApostados.isEmpty()){
@@ -76,8 +73,6 @@ public class Ronda extends Observable {
     public void setMontoGanado(int montoGanado) {
         this.montoGanado = montoGanado;
     }
-    
-    
 
     private Casillero obtenerCasillero(Casillero casillero) {
         for(Casillero c:casillerosApostados){
@@ -85,7 +80,6 @@ public class Ronda extends Observable {
                 return c;
             }
         }
-        
         return null;
     }
     //esta para pruebas
@@ -105,12 +99,37 @@ public class Ronda extends Observable {
         return cantidad;
     }
     
+    public Casillero getCasilleroGanador(){
+        Casillero casi = null;
+        if(!casillerosApostados.isEmpty()){
+           for(Casillero c:casillerosApostados){
+                if(c.getUcc() == this.numeroGanador) casi = c;
+            }
+        }
+        return casi;
+    }
+    
     public int montoTotalApostadoEnRonda(){
         int cantidad =0;
         for(Casillero c:casillerosApostados){
             cantidad+=c.montoTotalApuestas();
         }
         return cantidad;
+    }
+    
+    public int montoTotalPagadoAJugadores(){
+        int monto = 0;
+        Casillero c = getCasilleroGanador();
+        if(c != null){
+           monto = c.pagarApuestas();
+        }
+        return monto;
+    }
+    
+    public int actualizarBalance(int balance){
+        balance += montoTotalApostadoEnRonda();
+        balance -= montoTotalPagadoAJugadores();
+        return balance;
     }
     
     //metopdo de prueba 

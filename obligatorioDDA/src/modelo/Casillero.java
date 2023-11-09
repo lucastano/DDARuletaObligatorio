@@ -111,6 +111,26 @@ public class Casillero {
         
         return null;
     }
+    
+    public int pagarApuestas(){
+        int total = 0;
+        
+        for(Apuesta a:apuestas){
             
+            int ganancia = 0;
+            
+            if(this.tipoApuesta.getNombre() == "ApuestaDirecta"){
+                ganancia = a.getMonto()*36;
+            } else if (this.tipoApuesta.getNombre() == "ApuestaDocena"){
+                ganancia = a.getMonto()*3;
+            } else {
+                ganancia = a.getMonto()*2;
+            }
+            
+            total += ganancia;
+            a.getJugador().setSaldo(ganancia);
+        }
+        return total;
+    }
     
 }
