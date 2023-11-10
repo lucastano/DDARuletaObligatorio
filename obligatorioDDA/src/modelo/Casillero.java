@@ -133,4 +133,14 @@ public class Casillero {
         return total;
     }
     
+    public List<Apuesta> obtenerApuestasPorJugador(Jugador jugador) {
+        List<Apuesta> apuestasDelJugador = new ArrayList<>();
+        for (Apuesta apuesta : apuestas) {
+            if (apuesta.getJugador().equals(jugador)) {
+                apuestasDelJugador.add(apuesta);
+            }
+        }
+        return apuestasDelJugador;
+    }
+    
 }

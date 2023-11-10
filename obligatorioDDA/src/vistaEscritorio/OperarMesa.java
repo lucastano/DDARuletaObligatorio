@@ -58,7 +58,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
         btnCerrarMesa = new javax.swing.JButton();
         lblRonda = new javax.swing.JLabel();
         lblValorBalance = new javax.swing.JLabel();
-        panelRuleta1 = new componente.PanelRuleta();
         jSeparator3 = new javax.swing.JSeparator();
         lblCantidadApuestas = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -92,13 +91,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
         });
 
         lblRonda.setText("Ronda #");
-
-        panelRuleta1.setBackground(new java.awt.Color(242, 242, 242));
-        panelRuleta1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelRuleta1MouseClicked(evt);
-            }
-        });
 
         lblCantidadApuestas.setText("Apuestas :");
 
@@ -189,20 +181,17 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
                             .addComponent(jSeparator3)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblCantidadApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(btnLanzarPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(panelRuleta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblCantidadApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(btnLanzarPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -241,15 +230,9 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
                     .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLanzarPagar)
                     .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 284, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 284, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLanzamientos)
@@ -289,7 +272,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
@@ -312,7 +294,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
     private javax.swing.JLabel lblRonda;
     private javax.swing.JLabel lblSorteado;
     private javax.swing.JLabel lblValorBalance;
-    private componente.PanelRuleta panelRuleta1;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     // End of variables declaration//GEN-END:variables
@@ -330,7 +311,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
         Icon iconoEscaladoRuleta=new ImageIcon(imgEscaladaRuleta);
         lblNroRuleta.setIcon(iconoEscaladoRuleta);
     }
-
     
 
     @Override
@@ -340,8 +320,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
             cbEfectos.addItem(efecto.toString());
         }
     }
-
-    
 
     @Override
     public void mostrarBalance(int balance) {
@@ -362,7 +340,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
         for(Efecto e:efectosDisponibles){
             cbEfectos.addItem(e);
         }
-        
     }
 
     @Override
@@ -397,8 +374,6 @@ public class OperarMesa extends javax.swing.JFrame implements VistaOperarMesa {
     public void mostrarMontoTotalDeRonda(int monto) {
         lblMonto.setText("Monto $: "+monto);
     }
-
     
-
-    
+   
 }

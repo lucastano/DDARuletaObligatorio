@@ -34,8 +34,53 @@ public class ApuestaColor extends TipoApuesta {
 
     @Override
     public boolean aplicarRestriccion(Apuesta a, Mesa m) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   
+        Ronda rondaAnterior = m.obtenerRondaAnterior(); 
+        if (rondaAnterior == null) {
+            return true; 
+        }
+
+        Casillero casiAnterior = rondaAnterior.getCasilleroGanador();
+        int codigo = casiAnterior.getUcc();
+        
+        
+        List<Casillero> CasillerosConApuestasPrevias = obtenerCasillerosConApuestasPrevias(rondaAnterior, a.getJugador());
+        
+        
+        boolean perdioApuestaAnterior = false;
+        if (perdioApuestaAnterior) {
+            int montoMaximo = 0;
+            if (a.getMonto() > montoMaximo) {
+                return false; // Viola la restricción
+            }
+        }
+
+        return true; // No viola ninguna restricción
+
     }
+    
+    public List<Casillero> obtenerCasillerosConApuestasPrevias(Ronda rondaAnterior, Jugador j)
+    {
+        List<Casillero> ApuestasPrevias = new ArrayList();
+        
+        for(Casillero casi : rondaAnterior.obtenerCasillerosApostados()){
+              if(casi.obtenerApuestasPorJugador(j) != null){
+                  ApuestasPrevias.add(casi);
+              }
+        }
+         return ApuestasPrevias;    
+    }
+//    
+//    public Apuesta ApostoAlGanador(List<Casillero> CasillerosConApuestasPrevias, Casillero casiAnterior){
+//        List<Casillero> ApuestasPrevias = new ArrayList();
+//        
+//        for(Casillero casi : rondaAnterior.obtenerCasillerosApostados()){
+//              if(casi.obtenerApuestasPorJugador(j) != null){
+//                  ApuestasPrevias.add(casi);
+//              }
+//        }
+//         return ApuestasPrevias;  
+//    }
 
     @Override
     public List<Numero> crearCasilleros(int codigo) {
@@ -57,7 +102,7 @@ public class ApuestaColor extends TipoApuesta {
             
         }
         
-        return codigo==43 ? rojos :negros;
+        return codigo == 43 ? rojos : negros;
         
         
     }

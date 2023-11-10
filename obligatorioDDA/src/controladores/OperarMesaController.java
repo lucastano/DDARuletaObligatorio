@@ -63,11 +63,10 @@ public class OperarMesaController implements Observador {
         
     }
 
-
     @Override
     public void actualizar(Object evento, Observable origen) {
         if(evento.equals(Mesa.eventos.cambioBalance)){
-            vista.mostrarBalance(mesa.getBalanceMesa());
+            vista.mostrarBalance(mesa.getBalanceActualizado());
         }
         else if(evento.equals(Mesa.eventos.cambioRonda)){
             vista.mostrarNumeroRonda(mesa.getRondas().size());

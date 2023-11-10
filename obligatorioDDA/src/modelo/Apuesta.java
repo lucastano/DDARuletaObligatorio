@@ -7,10 +7,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lucas
- */
+
 public class Apuesta {
     private int monto ;
     private Jugador jugador;

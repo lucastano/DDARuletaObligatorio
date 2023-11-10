@@ -5,7 +5,10 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import static modelo.Mesa.eventos.cambioBalance;
 import static modelo.Mesa.eventos.cambioRonda;
 import static modelo.Mesa.eventos.salioJugador;
 import static modelo.Mesa.eventos.seAgregoJugador;
@@ -21,10 +24,12 @@ public class Mesa extends Observable {
     private static int ultimoNumeroRuleta=1;
     private List<TipoApuesta>tiposApuestaHabilitados;
     private List<Jugador>jugadores=new ArrayList<>();
+    private Map<Jugador, Apuesta> historialUltimaApuestaPerdida = new HashMap<>();
     
     public enum eventos{cambioBalance,cambioRonda,seAgregoJugador,salioJugador};
 
     public Mesa(List<TipoApuesta>tiposApuesta,Croupier croupier, List<Efecto>efectosDisponibles) {
+        
         this.operador=croupier;
         this.balanceMesa=0;
         this.numeroRuleta=this.ultimoNumeroRuleta;
@@ -38,8 +43,6 @@ public class Mesa extends Observable {
     public List<Jugador> getJugadores() {
         return jugadores;
     }
-    
-    
 
     public Croupier getOperador() {
         return operador;
@@ -81,34 +84,46 @@ public class Mesa extends Observable {
             jugadores.remove(jugador);
             avisar(salioJugador);
         }
-        
     }
-    
     
     public void sortearRonda(){
         this.rondaActual.sortear(rondas);
         
     }
     
+    public int getBalanceActualizado(){
+        this.balanceMesa = rondaActual.actualizarBalance(this.balanceMesa);
+        avisar(cambioBalance);
+        return getBalanceMesa();
+    }
+    
     public void nuevaRonda(){
         Ronda ronda = new Ronda();
         this.rondaActual=ronda;
         rondas.add(ronda);
-        avisar(cambioRonda);
+        avisar(cambioRonda);   
         
     }
     
     public void aumentarBalanceMesa(int monto){
         this.balanceMesa+=monto;
     }
+    
     public void disminuirBalanceMesa(int monto){
         this.balanceMesa-=monto;
+    }
+    
+    public Ronda obtenerRondaAnterior() {
+        if (rondas.size() > 1) {
+
+            return rondas.get(rondas.size() - 2);
+        }
+        return null;
     }
 
     @Override
     public String toString() {
         return "Mesa #"+numeroRuleta+ "Rondas disputadas: "+rondas.size()+" Crupier: "+operador.getNombre();
     }
-    
     
 }

@@ -10,10 +10,6 @@ import static modelo.Ronda.eventos.agregoApuesta;
 
 import observador.Observable;
 
-/**
- *
- * @author Lucas
- */
 public class Ronda extends Observable {
     private int numeroRonda;
     private static int ultimoNumero=1;
@@ -132,6 +128,15 @@ public class Ronda extends Observable {
         return balance;
     }
     
+    public List<Casillero> obtenerCasillerosApostados(){
+        List<Casillero> Casilleros = new ArrayList();
+        
+        for(Casillero c:casillerosApostados){
+            Casilleros.add(c);
+        }
+        return Casilleros;
+    }
+    
     //metopdo de prueba 
      //borrar antes de entregar
     public void mostrarCasillerosApostados(){
@@ -140,7 +145,5 @@ public class Ronda extends Observable {
         }
         
     }
-    
-    
-    
+
 }

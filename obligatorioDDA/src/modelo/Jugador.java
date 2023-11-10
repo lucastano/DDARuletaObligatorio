@@ -7,10 +7,6 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lucas
- */
 public class Jugador extends Usuario {
     private String nombre;
     private String cedula;
@@ -55,20 +51,9 @@ public class Jugador extends Usuario {
         this.saldo=saldo-monto;
         
     }
+    
     public void agregarSaldo(int monto){
         this.saldo+=monto;
     }
-    
-    
-    
-    
-    
-    
-
-   
-
-    
-    
-    
     
 }
